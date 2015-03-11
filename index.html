@@ -18,24 +18,25 @@
                 </div>
             </section>
             <div class="form" >
-                <section ng-repeat="question in questions track by $index" class="item{{$index}}">
+                <ul class="page-indicator">
+                    <li ng-repeat = "node in nodes track by $index" class="indicator{{$index}}"></li>
+                </ul>
+                <section ng-repeat="node in nodes track by $index" class="item{{$index}}">
                     <div class="section-content">
-                        <h2>{{question.q}}</h2>
-                        <button ng-repeat="btn in question.ans track by $index" ng-click="proceed(links[$parent.$index], $index)"><h3>{{btn}}</h3></button>
+                        <h2>{{node.q}}</h2>
+                        <button ng-repeat="btn in node.ans track by $index" ng-click="proceed(nodes[$parent.$index], $index)"><h3>{{btn}}</h3></button>
                     </div>
                 </section>
             </div>
             <section class="splash" id="splash">
-                <ul class="handles">
-                    <li><div id="chart"></div></li>
-                    <li><div id="info">
-                        <h1 class="piesection-name"></h1>
-                        <h2>text text text</h2>
-                        <h2>text text text</h2>
-                        <h2>text text text</h2>
+                <div id="chart"></div>
+                <div id="info">
+                    <h1 class="piesection-name"></h1>
+                    <h2>text text text</h2>
+                    <h2>text text text</h2>
+                    <h2>text text text</h2>
 
-                    </div></li>
-                </ul>
+                </div>
             </section>
         </div>
 

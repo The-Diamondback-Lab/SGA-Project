@@ -17,10 +17,6 @@ h3{font-size:2em}
     overflow-y:hidden;
 }
 
-#chart, #info{
-    width: 45vw;
-    height:100vh;
-}
 .handles{
     list-style:none;
 }
@@ -28,6 +24,7 @@ h3{font-size:2em}
     display:inline-block;
 }
 
+/* ### DEFAULT SECTION ### */
 section{
     color: #FFFFFF;
     height:100vh;
@@ -42,16 +39,25 @@ section{
     text-align: center;
 }
 
+/* ### RESULT PAGE ### */
 .splash{
     margin:0; padding:0;
     background: #000;
 }
+#chart, #info{
+    width: 100vw;
+    height:100vh;
+}
+
+
+/* ### LANDING PAGE ### */
 .section-title{
     background: url("../assets/images/mckeldin.png");
     background-size: cover;
     color: #FFFFFF;
     height:100vh;
     border-bottom: 2vh white solid;
+    z-index: 5;
 }
 .section-title > .section-content{
     background:rgba(0,0,0,0.5);
@@ -73,6 +79,7 @@ section{
     background: rgba(0, 0, 0, 0.7);
 }
 
+/* ### FORM SECTION ### */
 .form{
     background-color:#E51837;
 }
@@ -97,4 +104,23 @@ section{
     background: #E51837;
     color:white;
     border: white;
+}
+
+/* ### PAGE INDICATOR ### */
+.page-indicator{
+    position: absolute;
+    right: 0;
+    top: 45vh;
+    list-style: none;
+}
+.page-indicator li{
+    border-radius: 10px;
+    background: #888888;
+    min-width: 10px;
+    min-height: 10px;
+    margin: 15px;
+}
+.page-indicator li#active{
+    background:#FFFFFF;
+    margin: 15px;
 }
