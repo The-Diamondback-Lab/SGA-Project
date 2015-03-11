@@ -29,7 +29,7 @@ angular.module("app", [])
             if(!scrolling){
                 if(delta > 0 && currPage > 0) {
                     currPage = breadcrumb.pop();
-                    maxPage = currPage;
+                    maxPage = Math.max(currPage, 1);
 
                 } else if(delta < 0 && currPage < maxPage) {
                     breadcrumb.push(currPage);
