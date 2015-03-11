@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="app">
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title></title>
+        <link rel="stylesheet" href="css/styles.css" />
+
+    </head>
+
+    <body>
+        <div class="content">
+            <section class="section-title">
+                <div class="section-content">
+                    <h4>Some text</h4>
+                    <h1>Student Funds</h1>
+                    <h5>Brought to you by Diamondback Lab</h5>
+                </div>
+            </section>
+            <div class="form" ng-controller="formCTRL">
+                <section ng-repeat="question in questions track by $index" class="item{{$index}}">
+                    <div class="section-content">
+                        <h2>{{question.q}}</h2>
+                        <button ng-repeat="btn in question.ans"><h3>{{btn}}</h3></button>
+                    </div>
+                </section>
+            </div>
+            <section class="splash">
+                <div class="section-content">
+                    <h2>splash</h2>
+                </div>
+            </section>
+        </div>
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="js/main.js"></script>
+
+
+    </body>
+</html>
