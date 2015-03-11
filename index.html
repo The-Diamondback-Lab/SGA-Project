@@ -20,7 +20,7 @@
                 <section ng-repeat="question in questions track by $index" class="item{{$index}}">
                     <div class="section-content">
                         <h2>{{question.q}}</h2>
-                        <button ng-repeat="btn in question.ans"><h3>{{btn}}</h3></button>
+                        <button ng-repeat="btn in question.ans track by $index" ng-click="proceed(links[$parent.$index], $index)"><h3>{{btn}}</h3></button>
                     </div>
                 </section>
             </div>
