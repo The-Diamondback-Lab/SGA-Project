@@ -34,12 +34,16 @@ section{
 .section-title{
     background: url("../assets/images/mckeldin.png");
     background-size: cover;
+    color: #FFFFFF;
     height:98vh;
     border-bottom: 2vh white solid;
 }
+.section-title > .section-content{
+    background:rgba(0,0,0,0.5);
+}
 
 .form{
-    background-color:#FFFFFF;
+    background-color:#E51837;
 }
 .form > section {
     height:99.5vh;
@@ -47,17 +51,19 @@ section{
 }
 
 button {
-    border: thick red solid;
-    color: red;
-    background: rgba(2,0,0,0);
+    border: thick #E51837 solid;
+    color: #E51837;
+    background: white;
     padding:15px;
     margin:15px;
     min-width:300px;
 
 }
 button:hover, button:focus{
-    background: rgba(0,0,0,0.3);
+    background: rgba(255, 255, 255, 0.7);
 }
-button:active{
-    background: rgba(0,0,0,0.5);
+button:active, .selected{
+    background: #E51837;
+    color:white;
+    border: white;
 }
