@@ -17,6 +17,17 @@ h3{font-size:2em}
     overflow-y:hidden;
 }
 
+#chart, #info{
+    width: 45vw;
+    height:100vh;
+}
+.handles{
+    list-style:none;
+}
+.handles > li{
+    display:inline-block;
+}
+
 section{
     color: #FFFFFF;
     height:100vh;
@@ -31,6 +42,10 @@ section{
     text-align: center;
 }
 
+.splash{
+    margin:0; padding:0;
+    background: #000;
+}
 .section-title{
     background: url("../assets/images/mckeldin.png");
     background-size: cover;
