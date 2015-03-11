@@ -35,11 +35,27 @@ section{
     background: url("../assets/images/mckeldin.png");
     background-size: cover;
     color: #FFFFFF;
-    height:98vh;
+    height:100vh;
     border-bottom: 2vh white solid;
 }
 .section-title > .section-content{
     background:rgba(0,0,0,0.5);
+}
+.section-title button{
+    border: thick white solid;
+    color: white;
+    background: transparent;
+    padding:15px;
+    margin:15px;
+    min-width:300px;
+    min-height: 100px;
+    margin-top:100px;
+}
+.section-title button:hover, .section-title button:focus{
+    background: rgba(0, 0, 0, 0.5);
+}
+.section-title button:active, .section-title .selected{
+    background: rgba(0, 0, 0, 0.7);
 }
 
 .form{
@@ -50,7 +66,7 @@ section{
     border-bottom: 1vh white solid;
 }
 
-button {
+.form button {
     border: thick #E51837 solid;
     color: #E51837;
     background: white;
@@ -59,10 +75,10 @@ button {
     min-width:300px;
 
 }
-button:hover, button:focus{
+.form button:hover, .form button:focus{
     background: rgba(255, 255, 255, 0.7);
 }
-button:active, .selected{
+.form button:active, .form .selected{
     background: #E51837;
     color:white;
     border: white;

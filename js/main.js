@@ -48,6 +48,17 @@ angular.module("app", [])
             }
         }
 
+        $scope.start = function(){
+            breadcrumb.push(currPage);
+            currPage = 1;
+            scrolling = true;
+            $(".content").animate({
+                scrollTop: $(".content section")[currPage].offsetTop, easing: "easeout"
+            }, 750, 0, function () {
+                scrolling = false
+            });
+        }
+
         $scope.questions = [
             {q: "Who are you?", ans:["Undergraduate","Graduate"]},
             {q: "Where do you live?", ans:["On Campus","Off Campus"]},
