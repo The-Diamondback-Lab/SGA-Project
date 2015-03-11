@@ -27,7 +27,6 @@ section{
 }
 .section-content{
     padding: 30vh 10vw;
-    background: rgba(0,0,0,0.3);
     height:100vh;
     text-align: center;
 }
@@ -48,9 +47,9 @@ section{
 }
 
 button {
-    border: thick white solid;
+    border: thick red solid;
     color: red;
-    background: rgba(0,0,0,0);
+    background: rgba(2,0,0,0);
     padding:15px;
     margin:15px;
     min-width:300px;
