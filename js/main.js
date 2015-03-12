@@ -202,14 +202,12 @@ $(function(){
     // Apply the theme
     Highcharts.setOptions(Highcharts.theme);
 
-    $("#info > .closebtn").click(hideInfo());
-
-    hideInfo = function(){
+    $("#info > .closebtn").click(function(){
         $("#info")[0].setAttribute("class","");
         chart.series[0].data.forEach(function(element){
             element.select(false);
         })
-    };
+    });
 })
 
 angular.module("app", [])
