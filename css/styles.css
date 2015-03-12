@@ -1,5 +1,11 @@
 /* ### FONTS ###*/
 @import url('http://fonts.googleapis.com/css?family=PT+Sans');
+@font-face {
+    font-family: 'Glyphicons Halflings';
+
+    src: url('../assets/fonts/glyphicons-halflings-regular.eot');
+    src: url('../assets/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../assets/fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../assets/fonts/glyphicons-halflings-regular.woff') format('woff'), url('../assets/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../assets/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
 h1{font-size:4em}
 h2{font-size:3em}
 h3{font-size:2em}
@@ -42,11 +48,51 @@ section{
 /* ### RESULT PAGE ### */
 .splash{
     margin:0; padding:0;
-    background: #000;
 }
-#chart, #info{
+#chart{
     width: 100vw;
     height:100vh;
+}
+#info{
+    background: rgba(0,0,0,0.7);
+    z-index:1;
+    border: thin rgba(255,255,255,0.5) solid;
+    position:absolute;
+    top:50vh;
+    left:50vw;
+    padding:0;
+    width:0;
+    height:0;
+    overflow-x:hidden;
+    overflow-y:hidden;
+    -webkit-animation: hidedesc 0.15s cubic-bezier(.16,.84,.44,1) 1 forwards;
+    -moz-animation: hidedesc 0.15s cubic-bezier(.16,.84,.44,1) 1 forwards;
+    -o-animation: hidedesc 0.15s cubic-bezier(.16,.84,.44,1) 1 forwards;
+
+}
+#info.show{
+    margin: -40vh 0 0 -40vw;
+    width:80vw;
+    height:80vh;
+    padding:15px;
+    -webkit-animation: showdesc 0.15s cubic-bezier(.16,.84,.44,1) 1 forwards;
+    -moz-animation: showdesc 0.15s cubic-bezier(.16,.84,.44,1) 1 forwards;
+    -o-animation: showdesc 0.15s cubic-bezier(.16,.84,.44,1) 1 forwards;
+
+}
+#info > .closebtn{
+    position: absolute;
+    top:5px;
+    right:5px;
+    cursor: pointer;
+    background:transparent;
+    border:none;
+    color:white;
+}
+#info > .closebtn:after{
+    font-family: 'Glyphicons Halflings';
+    font-size:2em;
+    content: "\e014";
 }
 
 
@@ -83,7 +129,7 @@ section{
     background-color:#E51837;
 }
 .form > section {
-    height:99.5vh;
+    height:100vh;
 }
 
 .form button {
@@ -121,4 +167,79 @@ section{
 .page-indicator li#active{
     background:#FFFFFF;
     margin: 15px;
+}
+
+/* ### ANIMATIONS ### */
+@-webkit-keyframes showdesc {
+    0% {
+        margin: 0;
+        width:0;
+        height:0;
+    }
+    100% {
+        margin: -40vh 0 0 -40vw;
+        width:80vw;
+        height:80vh;
+    }
+}
+@-moz-keyframes showdesc {
+    0% {
+        margin: 0;
+        width:0;
+        height:0;
+    }
+    100% {
+        margin: -40vh 0 0 -40vw;
+        width:80vw;
+        height:80vh;
+    }
+}
+@-o-keyframes showdesc {
+    0% {
+        margin: 0;
+        width:0;
+        height:0;
+    }
+    100% {
+        margin: -40vh 0 0 -40vw;
+        width:80vw;
+        height:80vh;
+    }
+}
+
+@-webkit-keyframes hidedesc {
+    100% {
+        margin: 0;
+        width:0;
+        height:0;
+    }
+    0% {
+        margin: -40vh 0 0 -40vw;
+        width:80vw;
+        height:80vh;
+    }
+}
+@-moz-keyframes hidedesc {
+    100% {
+        margin: 0;
+        width:0;
+        height:0;
+    }
+    0% {
+        margin: -40vh 0 0 -40vw;
+        width:80vw;
+        height:80vh;
+    }
+}
+@-o-keyframes hidedesc {
+    100% {
+        margin: 0;
+        width:0;
+        height:0;
+    }
+    0% {
+        margin: -40vh 0 0 -40vw;
+        width:80vw;
+        height:80vh;
+    }
 }

@@ -6,6 +6,7 @@ var breadcrumb = [0];
 var MAX_PAGE = 5;
 var top = 0;
 var scrolling = false;
+var chart;
 $(function(){
 
     Highcharts.theme = {
@@ -198,8 +199,17 @@ $(function(){
         maskColor: 'rgba(255,255,255,0.3)'
     };
 
-// Apply the theme
+    // Apply the theme
     Highcharts.setOptions(Highcharts.theme);
+
+    $("#info > .closebtn").click(hideInfo());
+
+    hideInfo = function(){
+        $("#info")[0].setAttribute("class","");
+        chart.series[0].data.forEach(function(element){
+            element.select(false);
+        })
+    };
 })
 
 angular.module("app", [])
@@ -288,14 +298,16 @@ angular.module("app", [])
                     point:{
                         events:{
                             click: function (event) {
+                                $('#info')[0].setAttribute("class","show");
                                 $('.piesection-name').html($scope.data[this.id].name);
                             }
                         }
                     }
                 }];
 
-                $('#chart').highcharts({
+                chart = new Highcharts.Chart({
                     chart: {
+                        renderTo: 'chart',
                         plotBackgroundColor: null,
                         plotBorderWidth: null,
                         plotShadow: false
