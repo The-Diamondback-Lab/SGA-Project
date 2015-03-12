@@ -255,7 +255,7 @@ angular.module("app", [])
             $(".page-indicator li").each(function(){
                 this.setAttribute("id","")
             });
-            $(".indicator" + (currPage - 1))[0].setAttribute("id","active");
+            $(".indicator" + (Math.min($scope.currNode.id, currPage - 1)))[0].setAttribute("id","active");
         }
 
         $scope.proceed = function(node, value){

@@ -56,7 +56,6 @@ section{
     background-size: cover;
     color: #FFFFFF;
     height:100vh;
-    border-bottom: 2vh white solid;
     z-index: 5;
 }
 .section-title > .section-content{
@@ -85,7 +84,6 @@ section{
 }
 .form > section {
     height:99.5vh;
-    border-bottom: 1vh white solid;
 }
 
 .form button {
