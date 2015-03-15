@@ -1,2 +1,2 @@
 # SGA-Project
-live project: http://52.1.179.178/revamp/stufunds/
+live project: http://54.173.60.11/revamp/stufunds/
