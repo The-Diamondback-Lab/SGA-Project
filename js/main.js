@@ -10,10 +10,9 @@ var chart;
 $(function(){
 
     Highcharts.theme = {
-        colors: ["#2b908f", "#90ee7e", "#f45b5b", "#7798BF", "#aaeeee", "#ff0066", "#eeaaee",
-            "#55BF3B", "#DF5353", "#7798BF", "#aaeeee"],
+        colors: ["#FFFFFF"],
         chart: {
-            backgroundColor: 'rgba(0,0,0,1)',
+            backgroundColor: '#E51837',
             plotBorderColor: '#606063'
         },
         title: {
@@ -78,14 +77,9 @@ $(function(){
                     lineColor: '#333'
                 }
             },
-            boxplot: {
-                fillColor: '#505053'
-            },
-            candlestick: {
-                lineColor: 'white'
-            },
-            errorbar: {
-                color: 'white'
+            pie:{
+                borderWidth:2,
+                borderColor:'#E51837'
             }
         },
         legend: {
@@ -300,6 +294,9 @@ angular.module("app", [])
                                 $('.piesection-name').html($scope.data[this.id].name);
                             }
                         }
+                    },
+                    dataLabels:{
+                        color: 'white'
                     }
                 }];
 
@@ -313,7 +310,8 @@ angular.module("app", [])
                     title: {
                         text: 'Your Student Fees',
                         floating: true,
-                        y: 30,
+                        y: 50,
+                        x: $('#chart').width() * 0.85 / 3,
                         style: {
                             color: '#fff',
                             font: 'bold 2em "PT Sans", sans-serif'
