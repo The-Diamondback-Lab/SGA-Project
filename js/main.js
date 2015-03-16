@@ -8,7 +8,6 @@ var top = 0;
 var scrolling = false;
 var chart;
 $(function(){
-
     Highcharts.theme = {
         colors: ["#FFFFFF"],
         chart: {
@@ -202,6 +201,11 @@ $(function(){
             element.select(false);
         })
     });
+
+    window.onresize = function(){
+        console.log("resized");
+        $(".content")[0].scrollTop = $(".content section")[currPage].offsetTop;
+    };
 })
 
 angular.module("app", [])
