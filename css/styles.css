@@ -97,13 +97,7 @@ section{
 
 
 /* ### LANDING PAGE ### */
-.section-title{
-    background: url("../assets/images/mckeldin.png");
-    background-size: cover;
-    color: #FFFFFF;
-    height:100vh;
-    z-index: 5;
-}
+
 .section-title > .section-content{
     background:rgba(0,0,0,0.5);
 }
@@ -254,4 +248,20 @@ section{
         height:80vh;
         opacity:1;
     }
+}
+/*video_background {
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	width: 2000px;
+	height: 2000px;
+
+	overflow: hidden;
+	background-size: cover;
+}*/
+video#bgvid {
+	position: fixed; right: 0; bottom: 0;
+	min-width: 100vw; min-height: 100vh;
+	width: auto; height: auto; z-index: -100;
+	background: url(/assets/images/mckeldin.png) cover;
 }
