@@ -40,7 +40,16 @@
                 </section>
             </div>
             <section class="splash" id="splash">
-                <div id="chart"></div>
+                <div class="toggle-chart-table">
+                    <ul class="handles tabs" id="resulttabs">
+                        <li onclick="toggle(0)">Pie</li>
+                        <li class="selected" onclick="toggle(1)">Table</li>
+                    </ul>
+                    <div id="chart" style="display:none"></div>
+                    <div id="table" style="">
+                        <h2>Table Table Table</h2>
+                    </div>
+                </div>
                 <div id="info">
                     <button class="closebtn"></button>
                     <h1 class="piesection-name"></h1>

@@ -5,9 +5,27 @@ var currPage = 0, maxPage = 1;
 var breadcrumb = [0];
 var MAX_PAGE = 5;
 var top = 0;
-var scrolling = false;
+var scrolling = false, display = 1;
 var chart;
+var toggle = function(target){
+    switch(target){
+        case 0:
+            $("#resulttabs > li")[0].setAttribute("class","selected");
+            $("#resulttabs > li")[1].setAttribute("class","");
+            $("#chart")[0].setAttribute("style","display:");
+            $("#table")[0].setAttribute("style","display:none");
+            break;
+        case 1:
+            $("#resulttabs > li")[0].setAttribute("class","");
+            $("#resulttabs > li")[1].setAttribute("class","selected");
+            $("#chart")[0].setAttribute("style","display:none");
+            $("#table")[0].setAttribute("style","display:");
+            break;
+    }
+}
 $(function(){
+
+
     Highcharts.theme = {
         colors: ["#FFFFFF"],
         chart: {
@@ -111,6 +129,7 @@ $(function(){
                 color: '#F0F0F3'
             }
         },
+        exporting: { enabled: false },
 
         navigation: {
             buttonOptions: {
