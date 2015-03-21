@@ -48,6 +48,10 @@
                     <div id="chart" style="display:none"></div>
                     <div id="table" style="">
                         <h2>Table Table Table</h2>
+                        <ul class="handles">
+                            <li ng-repeat="d in data track by $index"><a ng-click="show($index)"><div class="gridlink"><b>{{d.name}}</b></div></a></li>
+                        </ul>
+
                     </div>
                 </div>
                 <div id="info">

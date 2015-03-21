@@ -246,7 +246,7 @@ angular.module("app", [])
             var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
 
             if(!scrolling){
-                if(delta > 0 && currPage > 0) {
+                if(delta > 0 && currPage > 0 && currPage < maxPage) {
                     currPage = breadcrumb.pop();
                     maxPage = Math.max(currPage, 1);
                     scrolling = true;
@@ -313,8 +313,7 @@ angular.module("app", [])
                     point:{
                         events:{
                             click: function (event) {
-                                $('#info')[0].setAttribute("class","show");
-                                $('.piesection-name').html($scope.data[this.id].name);
+                                $scope.show(this.id);
                             }
                         }
                     },
@@ -362,6 +361,11 @@ angular.module("app", [])
 
             }
         };
+
+        $scope.show = function(index){
+            $('#info')[0].setAttribute("class","show");
+            $('.piesection-name').html($scope.data[index].name);
+        }
 
         $scope.nodes = [
             {id:0, name: ".item0", next: [1, 1], q: "Who are you?", ans:["Undergraduate","Graduate"]},
