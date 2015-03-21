@@ -72,6 +72,9 @@ section{
     height:100vh;
     background-color:#E51837;
 }
+#table{
+    overflow-y:auto;
+}
 #info{
     background: rgba(0,0,0,0.7);
     z-index:1;
