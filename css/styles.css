@@ -7,8 +7,8 @@
     src: url('../assets/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../assets/fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../assets/fonts/glyphicons-halflings-regular.woff') format('woff'), url('../assets/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../assets/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 h1{font-size:4em}
-h2{font-size:3em}
-h3{font-size:2em}
+h2, .h2{font-size:3em}
+h3, .h3{font-size:2em}
 
 /* ### FORMATTING ### */
 *{
@@ -48,6 +48,18 @@ h3{font-size:2em}
     display:inline-block;
 }
 
+.table {
+    width:100%;
+}
+.table > li{
+    min-width:calc(50% - 50px);
+    margin:25px;
+}
+
+.row {
+    width:100%;
+}
+
 /* ### DEFAULT SECTION ### */
 section{
     color: #FFFFFF;
@@ -71,9 +83,11 @@ section{
     width: 100vw;
     height:100vh;
     background-color:#E51837;
+    overflow-x:hidden;
 }
 #table{
     overflow-y:auto;
+    overflow-x:hidden;
 }
 #info{
     background: rgba(0,0,0,0.7);
@@ -157,10 +171,10 @@ section{
     min-width:300px;
 
 }
-.form button:hover, .form button:focus{
+.form button:hover, .form button:focus, .gridlink:hover, .gridlink:focus{
     background: rgba(255, 255, 255, 0.7);
 }
-.form button:active, .form .selected{
+.form button:active, .form .selected, .gridlink:active{
     background: #E51837;
     color:white;
     border: white;
@@ -290,17 +304,16 @@ video#bgvid {
 
 /* ### GRIDLINK ### */
 .gridlink {
-    width: 300px;
-    height: 150px;
+    width: 80vw;
+    font-size:3em;
+    text-align: center;
+    margin: 0 10vw;
+    padding:30px 0;
     position:relative;
-    background-color:#ddd;
-    background-position: center center;
-    background-size: cover;
-    border: solid thin black;
+    border: none;
+    color: #E51837;
+    background: white;
     display:inline-block;
-    -webkit-box-shadow: 3px 3px 1px 0px rgba(100,100,100,0.5);
-    -moz-box-shadow: 3px 3px 1px 0px rgba(100,100,100,0.5);
-    box-shadow: 3px 3px 1px 0px rgba(100,100,100,0.5);
     overflow-y: hidden;
     overflow-x: hidden;
 }

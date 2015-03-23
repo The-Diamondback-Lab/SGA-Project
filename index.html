@@ -21,7 +21,7 @@
                         <source src="assets/videos/ocean.mp4" type="video/mp4">
 					</video>
 					
-					<h4>Spring 2015</h4>
+					<h4>Student Fees | Spring 2015</h4>
                     <h1>WHERE DO YOUR STUDENT FEES GO?</h1>
                     <h6>Powered by The Diamondback Lab in partnership with the University of Maryland SGA</h6>
 					
@@ -47,7 +47,7 @@
                     </ul>
                     <div id="chart" style="display:none"></div>
                     <div id="table" style="">
-                        <h2>Table Table Table</h2>
+                        <h2 style="text-align:center">Your Results</h2>
                         <ul class="handles">
                             <li ng-repeat="d in data track by $index"><a ng-click="show($index)"><div class="gridlink"><b>{{d.name}}</b></div></a></li>
                         </ul>
@@ -57,9 +57,16 @@
                 <div id="info">
                     <button class="closebtn"></button>
                     <h1 class="piesection-name"></h1>
-                    <h2>text text text</h2>
-                    <h2>text text text</h2>
-                    <h2>text text text</h2>
+                    <ul class="handles">
+                        <li class="total-funds-text row"><span class="h2"></span><span class="h3"></span></li>
+                        <li class="student-pays-text row"><span class="h2"></span><span class="h3"></span></li>
+                        <li>
+                            <ul class="handles table">
+                                <li><h2>Top 3 Expenses</h2></li>
+                                <li><h2>SGA TEXT GOES HERE</h2></li>
+                            </ul>
+                        </li>
+                    </ul>
 
                 </div>
             </section>

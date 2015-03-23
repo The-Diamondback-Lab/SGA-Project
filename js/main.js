@@ -246,7 +246,7 @@ angular.module("app", [])
             var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
 
             if(!scrolling){
-                if(delta > 0 && currPage > 0 && currPage < maxPage) {
+                if(delta > 0 && currPage > 0 && currPage < MAX_PAGE) {
                     currPage = breadcrumb.pop();
                     maxPage = Math.max(currPage, 1);
                     scrolling = true;
@@ -365,6 +365,10 @@ angular.module("app", [])
         $scope.show = function(index){
             $('#info')[0].setAttribute("class","show");
             $('.piesection-name').html($scope.data[index].name);
+            $('.total-funds-text > .h2').html($scope.data[index].total_funds);
+            $('.total-funds-text > .h3').html((100 * $scope.data[index].total_funds / $scope.TOTAL_FUNDS).toFixed(2) + "%");
+            $('.student-pays-text > .h2').html($scope.data[index].student_funds);
+            $('.student-pays-text > .h3').html((100 * $scope.data[index].student_funds / $scope.TOTAL_STUDENT_FUNDS).toFixed(2) + "%")
         }
 
         $scope.nodes = [
@@ -376,19 +380,21 @@ angular.module("app", [])
         /* array containing links between form sections (for example you can skip .item2 (are you full time or not) if you said you lived on campus*/
         $scope.answers = [-1, -1, -1, -1];
         $scope.data = [
-            {name: 'DOTS', y: 500.0, id: 0},
-            {name: 'Nyumburu', y: 45.0, id: 1},
-            {name: 'Student Activities Fee', y: 45.0, id: 2},
-            {name: 'Stamp', y: 45.0, id: 3},
-            {name: 'Sustainability Fund', y: 45.0, id: 4},
-            {name: 'Facilities Fund', y: 45.0, id: 5},
-            {name: 'Performing Arts', y: 45.0, id: 6},
-            {name: 'Health Center', y: 45.0, id: 7},
-            {name: 'Campus Recreation', y: 45.0, id: 8},
-            {name: 'Technology', y: 45.0, id: 9},
-            {name: 'Athletics', y: 45.0, id: 10},
-            {name: 'Libraries', y: 45.0, id: 11}
+            {name: 'DOTS', y: 500.0, id: 0, total_funds: 10000000, student_funds: 100},
+            {name: 'Nyumburu', y: 45.0, id: 1, total_funds: 10000000, student_funds: 200},
+            {name: 'Student Activities Fee', y: 45.0, id: 2, total_funds: 10000000, student_funds: 300},
+            {name: 'Stamp', y: 45.0, id: 3, total_funds: 10000000, student_funds: 500},
+            {name: 'Sustainability Fund', y: 45.0, id: 4, total_funds: 10000000, student_funds: 400},
+            {name: 'Facilities Fund', y: 45.0, id: 5, total_funds: 10000000, student_funds: 600},
+            {name: 'Performing Arts', y: 45.0, id: 6, total_funds: 10000000, student_funds: 700},
+            {name: 'Health Center', y: 45.0, id: 7, total_funds: 10000000, student_funds: 800},
+            {name: 'Campus Recreation', y: 45.0, id: 8, total_funds: 10000000, student_funds: 900},
+            {name: 'Technology', y: 45.0, id: 9, total_funds: 10000000, student_funds: 1000},
+            {name: 'Athletics', y: 45.0, id: 10, total_funds: 10000000, student_funds: 1100},
+            {name: 'Libraries', y: 45.0, id: 11, total_funds: 10000000, student_funds: 1200}
         ];
+        $scope.TOTAL_STUDENT_FUNDS = 7800;
+        $scope.TOTAL_FUNDS = 120000000;
         $scope.currNode = $scope.nodes[0];
 
     })
