@@ -1,5 +1,6 @@
 /* ### FONTS ###*/
 @import url('http://fonts.googleapis.com/css?family=PT+Sans');
+@import url('font-awesome.min.css');
 @font-face {
     font-family: 'Glyphicons Halflings';
 
@@ -25,17 +26,29 @@ h3, .h3{font-size:2em}
 
 .toggle-chart-table{
     position:relative;
+    height:100vh;
 }
 
 .tabs{
     position:absolute;
     bottom:0;
-    left:50vw;
+    width:100%;
+    text-align: center;
     z-index:5;
+    font-size: 2em;
+    background: #E51837;
+}
+.tabs > li{
+    width:30%;
+}
+.chartbtn:before{
+}
+.tablebtn:before{
 }
 .tabs > li:hover, .tabs > li:focus{
     background: #888888;
     cursor:pointer;
+    padding:0; margin:0;
 }
 .tabs > .selected {
     background: #888888;
@@ -47,13 +60,14 @@ h3, .h3{font-size:2em}
 .handles > li{
     display:inline-block;
 }
-
-.table {
+#table > h2{
+    background: #E51837;
+    position:absolute;
     width:100%;
+    z-index: 5;
 }
-.table > li{
-    min-width:calc(50% - 50px);
-    margin:25px;
+#table > ul{
+    padding-top:100px;
 }
 
 .row {
@@ -78,10 +92,11 @@ section{
 /* ### RESULT PAGE ### */
 .splash{
     margin:0; padding:0;
+    background: E51837;
 }
 #chart,#table{
     width: 100vw;
-    height:100vh;
+    height:calc(100vh - 42px);
     background-color:#E51837;
     overflow-x:hidden;
 }
@@ -160,6 +175,7 @@ section{
 }
 .form > section {
     height:100vh;
+    display:none;
 }
 
 .form button {

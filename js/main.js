@@ -25,7 +25,8 @@ var toggle = function(target){
 }
 $(function(){
 
-
+    $($(".content section")[1]).css("display","block");
+    $(".splash").css("display","block");
     Highcharts.theme = {
         colors: ["#FFFFFF"],
         chart: {
@@ -214,13 +215,6 @@ $(function(){
     // Apply the theme
     Highcharts.setOptions(Highcharts.theme);
 
-    $("#info > .closebtn").click(function(){
-        $("#info")[0].setAttribute("class","");
-        chart.series[0].data.forEach(function(element){
-            element.select(false);
-        })
-    });
-
     window.onresize = function(){
         console.log("resized");
         $(".content")[0].scrollTop = $(".content section")[currPage].offsetTop;
@@ -248,6 +242,7 @@ angular.module("app", [])
             if(!scrolling){
                 if(delta > 0 && currPage > 0 && currPage < MAX_PAGE) {
                     currPage = breadcrumb.pop();
+                    $scope.answers.pop();
                     maxPage = Math.max(currPage, 1);
                     scrolling = true;
                 } else if(delta < 0 && currPage < maxPage) {
@@ -275,7 +270,10 @@ angular.module("app", [])
             $(".content").animate({
                 scrollTop: $(".content section")[currPage].offsetTop, easing: "easeout"
             }, 750, 0, function () {
-                scrolling = false
+                scrolling = false;
+                if(currPage + 1 < MAX_PAGE){
+                    $($(".content section")[currPage + 1]).css("display","none");
+                }
             });
             $(".page-indicator li").each(function(){
                 this.setAttribute("id","")
@@ -285,12 +283,9 @@ angular.module("app", [])
 
         $scope.proceed = function(node, value){
             breadcrumb.push(currPage);
-            $scope.answers[node.id] = value;
-            for(var index = node.id + 1; index < $scope.nodes.length; index++) {
-                $scope.answers[index] = -1;
-            }
-            console.log($scope.answers + " " + maxPage);
-            if(node.next.length > 0){
+            $scope.answers.push(value);
+            if(node.next){
+                $($(".content section")[node.next[value] + 1]).css("display","block");
                 scrolling = true;
                 maxPage = node.next[value] + 1;
                 currPage = node.next[value] + 1;
@@ -357,7 +352,12 @@ angular.module("app", [])
                     },
                     series: series
                 });
-                //$scope.loadChart(series, 'Student Funds');
+                $("#info > .closebtn").click(function(){
+                    $("#info")[0].setAttribute("class","");
+                    chart.series[0].data.forEach(function(element){
+                        element.select(false);
+                    })
+                });
 
             }
         };
@@ -378,7 +378,7 @@ angular.module("app", [])
             {id:3, name: ".item3", next: false, q: "Do you park?", ans:["Yes","No"]}
         ];
         /* array containing links between form sections (for example you can skip .item2 (are you full time or not) if you said you lived on campus*/
-        $scope.answers = [-1, -1, -1, -1];
+        $scope.answers = [];
         $scope.data = [
             {name: 'DOTS', y: 500.0, id: 0, total_funds: 10000000, student_funds: 100},
             {name: 'Nyumburu', y: 45.0, id: 1, total_funds: 10000000, student_funds: 200},
