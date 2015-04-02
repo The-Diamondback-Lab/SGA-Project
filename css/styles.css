@@ -11,6 +11,29 @@ h1{font-size:4em}
 h2, .h2{font-size:3em}
 h3, .h3{font-size:2em}
 
+video{
+    width:100%;
+}
+.collapse-mobile{
+    display:block;
+}
+@media (max-width: 43.75em) {
+    h1{font-size:3em}
+    h2, .h2{font-size:2em}
+    h3, .h3{font-size:1.5em}
+    video{
+        height:100vh;
+    }
+    .collapse-mobile{
+        display:none;
+    }
+}
+@media (max-width: 36) {
+    h1{font-size:2.5em}
+    h2, .h2{font-size:1.75em}
+    h3, .h3{font-size:1.25em}
+}
+
 /* ### FORMATTING ### */
 *{
     padding: 0;
@@ -40,18 +63,21 @@ h3, .h3{font-size:2em}
 }
 .tabs > li{
     width:30%;
+    padding:10px;
+    max-height:42px;
+    background:none;
+    border:white thin solid;
 }
 .chartbtn:before{
 }
 .tablebtn:before{
 }
 .tabs > li:hover, .tabs > li:focus{
-    background: #888888;
+    background: rgba(0,0,0,0.5);
     cursor:pointer;
-    padding:0; margin:0;
 }
 .tabs > .selected {
-    background: #888888;
+    background: rgba(0,0,0,0.7);
 }
 
 .handles{
@@ -60,9 +86,10 @@ h3, .h3{font-size:2em}
 .handles > li{
     display:inline-block;
 }
-#table > h2{
+.splash > h2{
     background: #E51837;
     position:absolute;
+    top:-62px;
     width:100%;
     z-index: 5;
 }
@@ -92,17 +119,18 @@ section{
 /* ### RESULT PAGE ### */
 .splash{
     margin:0; padding:0;
-    background: E51837;
+    background: #E51837;
+    position:relative;
 }
 #chart,#table{
+    top:0;
     width: 100vw;
-    height:calc(100vh - 42px);
+    height:calc(100vh - 104px);
     background-color:#E51837;
     overflow-x:hidden;
 }
 #table{
-    overflow-y:auto;
-    overflow-x:hidden;
+    overflow-y:scroll;
 }
 #info{
     background: rgba(0,0,0,0.7);
@@ -193,7 +221,6 @@ section{
 .form button:active, .form .selected, .gridlink:active{
     background: #E51837;
     color:white;
-    border: white;
 }
 
 /* ### PAGE INDICATOR ### */
@@ -321,7 +348,6 @@ video#bgvid {
 /* ### GRIDLINK ### */
 .gridlink {
     width: 80vw;
-    font-size:3em;
     text-align: center;
     margin: 0 10vw;
     padding:30px 0;

@@ -25,7 +25,6 @@ var toggle = function(target){
 }
 $(function(){
 
-    $($(".content section")[1]).css("display","block");
     $(".splash").css("display","block");
     Highcharts.theme = {
         colors: ["#FFFFFF"],
@@ -262,6 +261,7 @@ angular.module("app", [])
         $scope.start = function(){
             breadcrumb.push(currPage);
             currPage = 1;
+            $($(".content section")[1]).css("display","block");
             scrolling = true;
             $scope.scroll();
         }
@@ -325,7 +325,7 @@ angular.module("app", [])
                         plotShadow: false
                     },
                     title: {
-                        text: 'Your Student Fees',
+                        text: '',
                         floating: true,
                         y: 50,
                         x: $('#chart').width() * 0.85 / 3,

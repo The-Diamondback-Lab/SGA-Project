@@ -16,12 +16,12 @@
 					<source src="videos/ocean.webm" type="video/webm"> 
 					<source src="videos/ocean.mp4" type="video/mp4"> 
 					Video not supported </video>-->
-					<video autoplay loop poster="assets/videos/ocean.jpg" id="bgvid">
-                        <source src="assets/videos/ocean.webm" type="video/webm">
-                        <source src="assets/videos/ocean.mp4" type="video/mp4">
+					<video autoplay loop poster="assets/videos/cover.png" id="bgvid">
+                        <source src="assets/videos/mckeldin.webm" type="video/webm">
+                        <source src="assets/videos/mckeldin.mp4" type="video/mp4">
 					</video>
 					
-					<h4>Student Fees | Spring 2015</h4>
+					<h4>The Diamondback | Spring 2015</h4>
                     <h1>WHERE DO YOUR STUDENT FEES GO?</h1>
                     <h6>Powered by The Diamondback Lab in partnership with the University of Maryland SGA</h6>
 					
@@ -41,16 +41,19 @@
             </div>
             <section class="splash" id="splash">
                 <div class="toggle-chart-table">
-                    <ul class="handles tabs" id="resulttabs">
-                        <li onclick="toggle(0)"><i class="fa fa-pie-chart"></i>&nbsp;&nbsp;Pie</li>
+                    <h2 style="text-align:center;">Your Results</h2>
+                    <ul class="handles tabs collapse-mobile" id="resulttabs">
+                        <li onclick="toggle(0)"><i class="fa fa-pie-chart"></i>&nbsp;&nbsp;Chart</li>
                         <li class="selected" onclick="toggle(1)"><i class="fa fa-table"></i>&nbsp;&nbsp;Table</li>
                     </ul>
-                    <div id="chart" style="display:none"></div>
+                    <div id="chart" style="display:none">
+                    </div>
                     <div id="table" style="">
-                        <h2 style="text-align:center">Your Results</h2>
-                        <ul class="handles">
-                            <li ng-repeat="d in data track by $index"><a ng-click="show($index)"><div class="gridlink"><b>{{d.name}}</b></div></a></li>
-                        </ul>
+                        <div class="table" style="padding-top:62">
+                            <ul class="handles">
+                                <li ng-repeat="d in data track by $index"><a ng-click="show($index)"><div class="gridlink"><h2>{{d.name}}</h2></div></a></li>
+                            </ul>
+                        </div>
 
                     </div>
                 </div>
