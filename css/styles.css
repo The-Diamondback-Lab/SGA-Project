@@ -24,12 +24,35 @@ video{
     video{
         height:100vh;
     }
-    .collapse-mobile{
+    .desktop-only{
+        visibility: hidden;
+    }
+    .mobile-fill{
+        height:calc(100%-62px);
+    }
+    .mobile-default{
+        display:;
+    }
+    .desktop-default{
         display:none;
     }
 }
-@media (max-width: 36) {
-    h1{font-size:2.5em}
+@media (min-width: 43.75em){
+    .desktop-default{
+        display:;
+    }
+    .mobile-default{
+        display:none;
+    }
+}
+.hidden{
+    display:none;
+}
+.shown{
+    display;
+}
+@media (max-width: 36em) {
+    h1{font-size:2.3em}
     h2, .h2{font-size:1.75em}
     h3, .h3{font-size:1.25em}
 }
@@ -115,6 +138,11 @@ section{
     height:100vh;
     text-align: center;
 }
+.container{
+    overflow-y: scroll;
+    overflow-x:hidden;
+    max-height:calc(100%-110px);
+}
 
 /* ### RESULT PAGE ### */
 .splash{
@@ -123,25 +151,24 @@ section{
     position:relative;
 }
 #chart,#table{
-    top:0;
     width: 100vw;
-    height:calc(100vh - 104px);
+    height:100%;
     background-color:#E51837;
-    overflow-x:hidden;
 }
 #table{
     overflow-y:scroll;
 }
 #info{
-    background: rgba(0,0,0,0.7);
-    z-index:1;
-    border: thin rgba(255,255,255,0.5) solid;
+    background: #fff;
+    z-index:1000;
+    border: medium rgba(0,0,0,0.5) solid;
     position:absolute;
     top:50vh;
     left:50vw;
     padding:0;
     width:0;
     height:0;
+    color:black;
     overflow-x:hidden;
     overflow-y:hidden;
     -webkit-animation: hidedesc 0.15s cubic-bezier(.16,.84,.44,1) 1 forwards;
@@ -149,10 +176,13 @@ section{
     -o-animation: hidedesc 0.15s cubic-bezier(.16,.84,.44,1) 1 forwards;
 
 }
+#highcharts-container{
+    max-height:80vh;
+}
 #info.show{
     margin: -40vh 0 0 -40vw;
-    width:80vw;
-    height:80vh;
+    width:80%;
+    height:80%;
     padding:15px;
     -webkit-animation: showdesc 0.15s cubic-bezier(.16,.84,.44,1) 1 forwards;
     -moz-animation: showdesc 0.15s cubic-bezier(.16,.84,.44,1) 1 forwards;
@@ -161,12 +191,11 @@ section{
 }
 #info > .closebtn{
     position: absolute;
-    top:5px;
-    right:5px;
+    top:25px;
+    right:50px;
     cursor: pointer;
     background:transparent;
     border:none;
-    color:white;
 }
 #info > .closebtn:after{
     font-family: 'Glyphicons Halflings';
@@ -215,12 +244,25 @@ section{
     min-width:300px;
 
 }
+.gridlink{
+    position:relative;
+}
 .form button:hover, .form button:focus, .gridlink:hover, .gridlink:focus{
     background: rgba(255, 255, 255, 0.7);
 }
 .form button:active, .form .selected, .gridlink:active{
     background: #E51837;
     color:white;
+}
+
+.gridlink-overlay{
+    position:absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    opacity:0.2;
+    background-color:black;
+    height:100%;
 }
 
 /* ### PAGE INDICATOR ### */
@@ -282,7 +324,7 @@ section{
         margin: -40vh 0 0 -40vw;
         width:80vw;
         height:80vh;
-        opacity: 1;
+        opacity:1;
     }
 }
 
