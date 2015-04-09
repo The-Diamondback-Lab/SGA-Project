@@ -28,7 +28,7 @@ video{
         visibility: hidden;
     }
     .mobile-fill{
-        height:calc(100%-62px);
+        height:calc(100%-104px);
     }
     .mobile-default{
         display:;
@@ -108,6 +108,7 @@ video{
 }
 .handles > li{
     display:inline-block;
+    cursor:pointer;
 }
 .splash > h2{
     background: #E51837;
@@ -141,9 +142,12 @@ section{
 .container{
     overflow-y: scroll;
     overflow-x:hidden;
-    max-height:calc(100%-110px);
+    position:relative;
 }
-
+.container-inner{
+    position: absolute;
+    width: 100%; height: auto;
+}
 /* ### RESULT PAGE ### */
 .splash{
     margin:0; padding:0;
@@ -157,6 +161,7 @@ section{
 }
 #table{
     overflow-y:scroll;
+    overflow-x:hidden;
 }
 #info{
     background: #fff;
@@ -171,9 +176,9 @@ section{
     color:black;
     overflow-x:hidden;
     overflow-y:hidden;
-    -webkit-animation: hidedesc 0.15s cubic-bezier(.16,.84,.44,1) 1 forwards;
-    -moz-animation: hidedesc 0.15s cubic-bezier(.16,.84,.44,1) 1 forwards;
-    -o-animation: hidedesc 0.15s cubic-bezier(.16,.84,.44,1) 1 forwards;
+    -webkit-animation: hidedesc 0.5s cubic-bezier(.16,.84,.44,1) 1 forwards;
+    -moz-animation: hidedesc 0.5s cubic-bezier(.16,.84,.44,1) 1 forwards;
+    -o-animation: hidedesc 0.5s cubic-bezier(.16,.84,.44,1) 1 forwards;
 
 }
 #highcharts-container{
@@ -184,9 +189,9 @@ section{
     width:80%;
     height:80%;
     padding:15px;
-    -webkit-animation: showdesc 0.15s cubic-bezier(.16,.84,.44,1) 1 forwards;
-    -moz-animation: showdesc 0.15s cubic-bezier(.16,.84,.44,1) 1 forwards;
-    -o-animation: showdesc 0.15s cubic-bezier(.16,.84,.44,1) 1 forwards;
+    -webkit-animation: showdesc 0.5s cubic-bezier(.16,.84,.44,1) 1 forwards;
+    -moz-animation: showdesc 0.5s cubic-bezier(.16,.84,.44,1) 1 forwards;
+    -o-animation: showdesc 0.5s cubic-bezier(.16,.84,.44,1) 1 forwards;
 
 }
 #info > .closebtn{

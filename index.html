@@ -40,22 +40,25 @@
                 </section>
             </div>
             <section class="splash" id="splash">
-                <div class="toggle-chart-table" style="display:table;height:100vh">
-                    <h2 style="text-align:center;display:table-row;height:52px"></h2>
-                    <div class="container mobile-fill" style="display:table-row; height:auto; overflow-y:scroll">
-                        <div id="chart" style=" height: calc(100% - 125px)">
+                <div class="toggle-chart-table" style="display:table;height:100%">
+                    <div class="title-div" style="display:table-row;height:52px; background-color:rgba(0,0,0,0.2); border-bottom:thin white solid">
+                        <h2 style="text-align:center;width:100vw"></h2>
+                    </div>
+                    <div class="container mobile-fill" style="display:table-row; height:auto; overflow-y:scroll;">
+                        <div class="container-inner">
+                            <div id="chart" style="">
+                            </div>  
                         </div>
-                        <div id="table" style="">
+                        <div id="table">
                             <div class="table" style="padding-bottom:62px">
                                 <ul class="handles">
                                     <li ng-repeat="d in data track by $index"><a ng-click="show($index)"><div class="gridlink"><h2>{{d.name}}</h2><div class="gridlink-overlay" style="width:{{d.y/TOTAL_STUDENT_FUNDS * 100}}%"></div></div></a></li>
                                 </ul>
                             </div>
-
                         </div>
                     </div>
-                    <div id="resulttabs" style="display:table-row;height:0">
-                        <ul class="handles tabs desktop-only" id="resulttabs" style="">
+                    <div id="resulttabs" style="display:table-row;height:62px ">
+                        <ul class="handles tabs desktop-only" id="resulttabs" style="background-color:rgba(0,0,0,0.2);overflow-x:hidden;">
                             <li class="selected" onclick="toggle(0)"><i class="fa fa-pie-chart"></i>&nbsp;&nbsp;Chart</li>
                             <li onclick="toggle(1)"><i class="fa fa-table"></i>&nbsp;&nbsp;Table</li>
                         </ul>

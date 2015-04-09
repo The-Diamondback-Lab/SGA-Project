@@ -8,18 +8,19 @@ var top = 0;
 var scrolling = false, display = 1;
 var chart, konami = false, memecount = 0;
 var toggle = function(target){
+    $(window).trigger('resize');
     switch(target){
         case 0:
             $("#resulttabs > li")[0].setAttribute("class","selected");
             $("#resulttabs > li")[1].setAttribute("class","");
-            $("#chart")[0].setAttribute("style","display:");
-            $("#table")[0].setAttribute("style","display:none");
+            $("#chart").css("display","block");
+            $("#table").css("display","none");
             break;
         case 1:
             $("#resulttabs > li")[0].setAttribute("class","");
             $("#resulttabs > li")[1].setAttribute("class","selected");
-            $("#chart")[0].setAttribute("style","display:none");
-            $("#table")[0].setAttribute("style","display:");
+            $("#chart").css("display","none");
+            $("#table").css("display","block");
             break;
     }
 }
@@ -261,13 +262,13 @@ $(function(){
         $(".content")[0].scrollTop = $(".content section")[currPage].offsetTop;
         if ($(window).width() > 757){
             $("#table").css("display","none");
-            $("#chart").css("display","");
+            $("#chart").css("display","block");
         } else {
-            $("#table").css("display","");
+            $("#table").css("display","block");
             $("#chart").css("display","none");
             console.log("mobile");
         }
-        $("#info").css("width","100vw").css("height","100vh");
+        chart.setSize($("div.container").width(), $("div.container").height(), false);
     };
 })
 
@@ -287,6 +288,7 @@ angular.module("app", [])
 
             // cross-browser wheel delta
             var e = window.event || e; // old IE support
+//            console.log(e)
             var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
 
             if(!scrolling){
@@ -305,7 +307,7 @@ angular.module("app", [])
                 if(scrolling){
                     $scope.scroll();
                 }
-                console.log(currPage);
+//                console.log(currPage);
             }
         }
 
@@ -354,13 +356,13 @@ angular.module("app", [])
                 $scope.data = $scope.calc($scope.answers);
                 if ($(window).width() > 757){
                     $("#table").css("display","none");
-                    $("#chart").css("display","");
+                    $("#chart").css("display","block");
                 } else {
-                    $("#table").css("display","");
+                    $("#table").css("display","block");
                     $("#chart").css("display","none");
                     console.log("mobile");
                 }
-                $(".toggle-chart-table > h2").html("Your Annual Fees: $" + $scope.TOTAL_STUDENT_FUNDS.formatMoney(2, '.', ','));
+                $(".toggle-chart-table >.title-div > h2").html("Your Annual Fees: $" + $scope.TOTAL_STUDENT_FUNDS.formatMoney(2, '.', ','));
                 var series = [{
                     type: 'pie',
                     name: 'Student Funds',
@@ -375,7 +377,8 @@ angular.module("app", [])
                     },
                     dataLabels:{
                         color: 'white'
-                    }
+                    },
+                    startAngle: -60
                 }];
 
                 chart = new Highcharts.Chart({
@@ -383,7 +386,7 @@ angular.module("app", [])
                         renderTo: 'chart',
                         plotBackgroundColor: null,
                         plotBorderWidth: null,
-                        plotShadow: false
+                        plotShadow: false,
                     },
                     title: {
                         text: '',
@@ -413,6 +416,7 @@ angular.module("app", [])
                     },
                     series: series
                 });
+                chart.setSize($("div.container").width(), $("div.container").height(), false);
                 $("#info > .closebtn").click(function(){
                     $("#info")[0].setAttribute("class","");
                     chart.series[0].data.forEach(function(element){
