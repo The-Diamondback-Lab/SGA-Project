@@ -36,6 +36,19 @@ video{
     .desktop-default{
         display:none;
     }
+    .col-mobile-0{
+        display:none;
+    }
+    .col-mobile-1{
+        display:inline-block;
+        width:47.5%; 
+        vertical-align:top;
+    }
+    .col-mobile-2{
+        display:inline-block;
+        width:95%; 
+        vertical-align:top;
+    }
 }
 @media (min-width: 43.75em){
     .desktop-default{
@@ -43,6 +56,19 @@ video{
     }
     .mobile-default{
         display:none;
+    }
+    .col-desktop-0{
+        display:none;
+    }
+    .col-desktop-1{
+        display:inline-block;
+        width:47.5%; 
+        vertical-align:top;
+    }
+    .col-desktop-2{
+        display:inline-block;
+        width:95%; 
+        vertical-align:top;
     }
 }
 .hidden{
@@ -166,7 +192,7 @@ section{
 #info{
     background: #fff;
     z-index:1000;
-    border: medium rgba(0,0,0,0.5) solid;
+    border: medium rgba(255,255,255,0.5) solid;
     position:absolute;
     top:50vh;
     left:50vw;
@@ -174,24 +200,26 @@ section{
     width:0;
     height:0;
     color:black;
+    font-size:120%;
     overflow-x:hidden;
-    overflow-y:hidden;
-    -webkit-animation: hidedesc 0.5s cubic-bezier(.16,.84,.44,1) 1 forwards;
-    -moz-animation: hidedesc 0.5s cubic-bezier(.16,.84,.44,1) 1 forwards;
-    -o-animation: hidedesc 0.5s cubic-bezier(.16,.84,.44,1) 1 forwards;
+    overflow-y:auto;
+    -webkit-animation: hidedesc 0.5s cubic-bezier(.16,.84,.44,1) 0.6 forwards;
+    -moz-animation: hidedesc 0.5s cubic-bezier(.16,.84,.44,1) 0.6 forwards;
+    -o-animation: hidedesc 0.5s cubic-bezier(.16,.84,.44,1) 0.6 forwards;
 
 }
 #highcharts-container{
     max-height:80vh;
 }
-#info.show{
-    margin: -40vh 0 0 -40vw;
+#info.show, #info.resized{
+    position:absolute;
+    top: 10%; left:10%;
     width:80%;
     height:80%;
     padding:15px;
-    -webkit-animation: showdesc 0.5s cubic-bezier(.16,.84,.44,1) 1 forwards;
-    -moz-animation: showdesc 0.5s cubic-bezier(.16,.84,.44,1) 1 forwards;
-    -o-animation: showdesc 0.5s cubic-bezier(.16,.84,.44,1) 1 forwards;
+    -webkit-animation: showdesc 0.5s cubic-bezier(.16,.84,.44,1) 0.6 forwards;
+    -moz-animation: showdesc 0.5s cubic-bezier(.16,.84,.44,1) 0.6forwards;
+    -o-animation: showdesc 0.5s cubic-bezier(.16,.84,.44,1) 0.6 forwards;
 
 }
 #info > .closebtn{
@@ -206,6 +234,9 @@ section{
     font-family: 'Glyphicons Halflings';
     font-size:2em;
     content: "\e014";
+}
+#info > h1.piesection-name{
+    text-align: center;
 }
 
 
@@ -292,87 +323,66 @@ section{
 /* ### ANIMATIONS ### */
 @-webkit-keyframes showdesc {
     0% {
-        margin: 0;
-        width:0;
-        height:0;
+        transform:scale(0,0);
         opacity:0;
     }
     100% {
-        margin: -40vh 0 0 -40vw;
-        width:80vw;
-        height:80vh;
+        transform:scale(1,1);
         opacity:1;
     }
 }
 @-moz-keyframes showdesc {
     0% {
-        margin: 0;
-        width:0;
-        height:0;
+        transform:scale(0,0);
         opacity:0;
     }
     100% {
-        margin: -40vh 0 0 -40vw;
-        width:80vw;
-        height:80vh;
+        transform:scale(1,1);
         opacity:1;
     }
 }
+}
 @-o-keyframes showdesc {
     0% {
-        margin: 0;
-        width:0;
-        height:0;
+        transform:scale(0,0);
         opacity:0;
     }
     100% {
-        margin: -40vh 0 0 -40vw;
-        width:80vw;
-        height:80vh;
+        transform:scale(1,1);
         opacity:1;
     }
+}
 }
 
 @-webkit-keyframes hidedesc {
     100% {
-        margin: 0;
-        width:0;
-        height:0;
-        opacity:0;
-    }
-    0% {
-        margin: -40vh 0 0 -40vw;
-        width:80vw;
-        height:80vh;
+        transform:scale(0,0);
         opacity:1;
     }
+    0% {
+        transform:scale(1,1);
+        opacity:0;
+    }
+}
 }
 @-moz-keyframes hidedesc {
     100% {
-        margin: 0;
-        width:0;
-        height:0;
-        opacity:0;
+        transform:scale(0,0);
+        opacity:1;
     }
     0% {
-        margin: -40vh 0 0 -40vw;
-        width:80vw;
-        height:80vh;
-        opacity:1;
+        transform:scale(1,1);
+        opacity:0;
     }
 }
 @-o-keyframes hidedesc {
     100% {
-        margin: 0;
-        width:0;
-        height:0;
-        opacity:0;
+        transform:scale(0,0);
+        opacity:1;
     }
     0% {
-        margin: -40vh 0 0 -40vw;
-        width:80vw;
-        height:80vh;
-        opacity:1;
+        transform:scale(1,1);
+        opacity:0;
     }
 }
 /*video_background {

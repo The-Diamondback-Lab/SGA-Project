@@ -8,7 +8,6 @@ var top = 0;
 var scrolling = false, display = 1;
 var chart, konami = false, memecount = 0;
 var toggle = function(target){
-    $(window).trigger('resize');
     switch(target){
         case 0:
             $("#resulttabs > li")[0].setAttribute("class","selected");
@@ -259,6 +258,10 @@ $(function(){
 
     window.onresize = function(){
         console.log("resized");
+        $("#info").removeClass("show")
+        setTimeout(function(){
+            $("#info").addClass("show");
+        }, 500);
         $(".content")[0].scrollTop = $(".content section")[currPage].offsetTop;
         if ($(window).width() > 757){
             $("#table").css("display","none");
@@ -270,6 +273,18 @@ $(function(){
         }
         chart.setSize($("div.container").width(), $("div.container").height(), false);
     };
+    $("#info > .closebtn").click(function(){
+        $("#info")[0].setAttribute("class","");
+        chart.series[0].data.forEach(function(element){
+            element.select(false);
+        })
+    });
+    $("#info.show").click(function(e){
+        console.log("info");
+        e.stopPropagation();
+        e.preventDefault();
+    });
+
 })
 
 angular.module("app", [])
@@ -387,6 +402,14 @@ angular.module("app", [])
                         plotBackgroundColor: null,
                         plotBorderWidth: null,
                         plotShadow: false,
+                        events:{
+                            click: function (event) {
+                                $("#info").removeClass("show");
+                                chart.series[0].data.forEach(function(element){
+                                    element.select(false);
+                                });
+                            }
+                        }
                     },
                     title: {
                         text: '',
@@ -417,23 +440,31 @@ angular.module("app", [])
                     series: series
                 });
                 chart.setSize($("div.container").width(), $("div.container").height(), false);
-                $("#info > .closebtn").click(function(){
-                    $("#info")[0].setAttribute("class","");
-                    chart.series[0].data.forEach(function(element){
-                        element.select(false);
-                    })
-                });
 
             }
         };
 
         $scope.show = function(index){
-            $('#info')[0].setAttribute("class","show");
-            $('.piesection-name').html($scope.data[index].name);
-            $('.total-funds-text > .h2').html("$" + $scope.data[index].student_fees_support.formatMoney(2, '.', ','));
-            $('.total-funds-text > .h3').html((100 * $scope.data[index].student_fees_support_percentage).toFixed(2) + "%");
-            $('.student-pays-text > .h2').html("$" + $scope.data[index].y.formatMoney(2, '.', ','));
-            $('.student-pays-text > .h3').html((100 * $scope.data[index].y / $scope.TOTAL_STUDENT_FUNDS).toFixed(2) + "%")
+            if ($("#info.show").length > 0){
+                $("#info").removeClass("show");
+            } else {;
+                $('#info').addClass("show");
+                $('.piesection-name').html($scope.data[index].name);
+                $('.total-funds-text > .tfees').html("$" + $scope.data[index].student_fees_support.formatMoney(2, '.', ','));
+                $('.total-funds-text > .tpercent').html((100 * $scope.data[index].student_fees_support_percentage).toFixed(2) + "%");
+                $('.student-pays-text > .sfees').html("$" + $scope.data[index].y.formatMoney(2, '.', ','));
+                $('.student-pays-text > .spercent').html((100 * $scope.data[index].y / $scope.TOTAL_STUDENT_FUNDS).toFixed(2) + "%");
+                $('#info #expenses').html("");
+                for(var k = 0; k < Math.min($scope.data[index].top3.length, 3); k++){
+                    var expenses = $scope.data[index].top3[k];
+                    var x = document.createElement("li");
+                    var i = document.createTextNode(expenses);
+                    x.appendChild(i);
+                    $('#info #expenses')[0].appendChild(x);
+                    console.log(expenses);
+                }
+                $('#info #text').html($scope.data[index].sgatext);
+            }
         }
 
         $scope.nodes = [
@@ -452,9 +483,9 @@ angular.module("app", [])
                 partTime = (!onCampus && (answers[2] == 0)),
                 parking = (!onCampus ? (answers[3] == 0) : (answers[2] == 0));
             var res = [
-                {name: 'DOTS', y: (partTime ? 94.54 : 189.08), total_funds: 8434183.77, student_fees_support: 5507522, id:0},
+                {name: 'DOTS', y: (partTime ? 94.54 : 189.08+ (parking && (onCampus ? 481 : 249))), total_funds: 15170015.3, student_fees_support: 9906020, id:0},
                 {name: 'Performing Arts', y: (partTime ? 27.58 : 55.16), total_funds: 7095464, student_fees_support: 1681625, id: 1},
-                {name: 'CRS', y: (partTime ? 187.96 : 375.92), total_funds: 12911525.88, student_fees_support: 10974797,vid: 2},
+                {name: 'CRS', y: (partTime ? 187.96 : 375.92), total_funds: 12911525.88, student_fees_support: 10974797,id: 2},
                 {name: 'Sustainability', y: (undergrad ? (partTime ? 6 : 12) : 0), total_funds: 288510, student_fees_support: 288510, id: 3},
                 {name: 'Student Activities', y: (undergrad ? (partTime ? 37.52 : 75.04) : 32.30), total_funds: 1383508 + 113930, student_fees_support: 1383508 + 113930, id: 4},
                 {name: 'Student Technology', y: (partTime ? 82 : 164), total_funds: 4780829, student_fees_support: 4780829, id: 5},
@@ -464,9 +495,137 @@ angular.module("app", [])
                 {name: 'Nyumburu', y: (partTime ? 9.84 : 19.68), total_funds: 787284.81, student_fees_support: 746346, id: 9},
                 {name: 'ResLife', y: (onCampus ? 6424 : 0), total_funds: 56186160, student_fees_support: 56186160, id: 10},
                 {name: 'Dining', y: (onCampus ? 4209 : 0), total_funds: 35614182, student_fees_support: 35614182, id: 11},
-                {name: 'Student Union', y:(partTime ? 160.24 : 320.48), student_fees_support: 9334941, id: 12},
-                {name: 'Parking', y: (partTime ? 0 : (parking && onCampus ? 481 : (parking && !onCampus ? 249 : 0))), total_funds: 4398498, id: 13}
+                {name: 'Student Union', y:(partTime ? 160.24 : 320.48), total_funds: 11668676.25,  student_fees_support: 9334941, id: 12},
+                {name: 'Facilities Fund', y: (partTime ? 9.04 : 18.08), total_funds: 1954525, student_fees_support: 1954525, id: 13}
             ];
+            Array.prototype.find = function(str){
+                for(var i = 0; i < res.length; i++){
+                    if(res[i].name === str){
+                        return res[i];
+                    }
+                }
+            };
+            console.log(res.find("Nyumburu"));
+            var info = {
+                'ResLife': {
+                    top3: [
+                        "Mandatory residence hall costs such as maintenance, overhead, furniture, and cable fees.",
+                        "Residence life staff such as RAs, housekeeping, and 4Work",
+                        "The Residence Hall Association (RHA)"
+                    ],
+                    sgatext: "The ResLife fee is currently slated to increase slightly to pay for increased overhead costs. A potential increase could pay for better furniture, two-ply toilet paper, or better cable services. "
+                },
+                'DOTS': {
+                    top3: [
+                        "All of the regular scheduled shuttle bus service, including daytime (commuter buses and the circulator) and evening (color) routes.",
+                        "Nite Ride,Paratransit services, and miscellaneous services like the airport shuttles.",
+                        "Maintenance and upkeep of lots and overhead related to parking on campus. ",
+                        "DOTS employees and student staff."
+                    ],
+                    sgatext: "The ShuttleUM fee is going to see two increases next year. $2.23 per student to run the #116 purple, #118 gold, and #122 green evening service routes starting at 10 AM on Saturday and Sunday. $1.50 per student to establish a facilities renewal fund. This money goes into a sort of savings account to fund regular maintenance to shuttle facilities. <br> While there will be no increase next year, over the next few years the parking fee is slated to increase significantly as the number of parking spaces on campus begin to diminish due to construction projects. These fee increases will be done to keep level funding for parking. Currently, the parking fee for at least freshman and sophomore students is projected to disappear in either 2017 or 2018, as only upperclassman will be able to park on campus.  "
+                },
+                'CRS': {
+                    top3: [
+                        "Employee salaries, split approximately equally between full-time staff and student staff",
+                        "Operation and upkeep of recreational facilities, like Eppley, Ritchie, the turf complex, etc.",
+                        "Program operating expenses, including materials and supplies for Intramurals, equipment issue, Maryland Adventure Program and other expendable goods."
+                    ],
+                    sgatext: "CRS is currently looking at costs associated with the long discussed South Campus Recreation center to determine its feasibility. CRS will be discussing this issue with various student constituencies over the next several months if it determines a fee increase if necessary to build the new facility, however there are no other plans at this point in time."
+                },
+                'Student Activities': {
+                    top3: (undergrad) ? [
+                        "The SGA provides over $600,000 in funding to over 400 student groups on campus. The vast majority of student group programming is funded through SGA allocations.",
+                        "Funding for SEE events such as Art Attack and Homecoming Comedy Show",
+                        "The Undergraduate Legal Aid Office"
+                    ] : [
+                        "Tuition remission and stipends for GSG executives.",
+                        "Funding for events such as GRID (Graduate Research Interaction Day), Cherry Blossom Cruise, and King’s Dominion Trip.",
+                        "Funding to co-sponsor graduate student group events. "
+                    ],
+                    sgatext: (undergrad) ? 
+                        "Over recent months student groups have not been able to be fully funded for their events because of a lack of funds in the allocated portion of money to student groups from the SAF. After thorough research the SGA decided that the most effective solution would be to raise the SAF by $5.28. In the upcoming election, students will be asked to approve or reject this increase." :
+                        "The GSG will not be pursuing a fee increase, however a possible fee increase would go to increase funding for co-sponsorships, more sophisticated lobbying efforts on behalf of graduate students, and potentially more events like GRID and the Cherry Blossom Cruise. "
+                },
+                'Sustainability':{
+                    top3:[
+                        "All expenses from this fund are grant-funded projects to improve the environmental performance of the campus. ",
+                        "To name a few examples, the fee has gone to supporting: student led food gardens at St. Mary’s Hall, Hillel, South Campus Diner and the School of Public Health, increasing bicycle parking, helping the Food Recovery Network, putting solar panels on top of the AV Williams Building, expanding compost collection in the Stamp Food Court"
+                    ],
+                    sgatext:"The sustainability fee is not set to increase. However, a fee increase would result in more money to fund more sustainability projects around campus."
+                },
+                'Athletics':{
+                    top3:[
+                        "Student tickets for all athletics events. Including 10,000 seats for football and 6,000 for basketball",
+                        "Debt service on the Xfinity Center",
+                        "Internships and part-time student jobs in the Athletic Department"
+                    ],
+                    sgatext:"The Athletic Department is not asking for a fee increase because of Big Ten revenues. If the fee were to increase, revenue would go towards more giveaways such as t-shirts for students."
+                },
+                'Nyumburu':{
+                    top3:[
+                        "Operations for student programming activities ",
+                        "Staff and adjunct instructor salaries and health benefits",
+                        "Supplies and furniture "
+                    ],
+                    sgatext: "Nyumburu is planning to ask for a fee increase to host conferences and learning activities in collaboration with academic departments to increase outreach into the Prince George's Community to bring in \"at-risk\" students and expose them to the benefits of higher education."
+                },
+                'Performing Arts': {
+                    top3:[
+                        "General maintenance and upkeep of the operations of the Clarice Smith Performing Arts Center. ",
+                        "Nearly one-third of fee support goes to internships, graduate assistant learning and regular student employment",
+                        "“Free UMD Student Ticket Mondays” to performances. Free access and engagement with artists through workshops and festivals such as the NextNOW Fest."
+                    ],
+                    sgatext:"The fee will see a small increase to fund mandatory overhead budget adjustments. A potential increase could result in increased arts programming by The Clarice as a whole. "
+                },
+                'Student Technology':{
+                    top3:[
+                        "Technology infrastructure across campus, including computers, internet service, wifi, printers, and software.",
+                        "Infrastructure improvements, like updated software and hardware and additional services.",
+                        "Classroom technology, including workstations, projectors, cameras, etc."
+                    ],
+                    sgatext: "There is no request for an increase in this fee. A potential fee increase could result in more wifi infrastructure and more free software for students."
+                },
+                'Library':{
+                    top3:[
+                        "Acquisition, maintenance, and refresh cycle of public workstations, loaner equipment, scanners, multimedia production technology, emerging technologies, and software.",
+                        "Student employees in the Libraries.",
+                        "Acquisition of E-Resources. "
+                    ],
+                    sgatext: "The Libraries is not asking asking for a fee increase at this point. However, a potential fee increase could go to increased staff support emerging technologies and media production, more collaboration workstations, more equipment loans, and expansion of engineering makerspace in McKeldin."
+                },
+                'Health Center':{
+                    top3:[
+                        "General health care promotion programs.",
+                        "Campus Advocates Respond and Educate (CARE) to Stop Violence, a peer based sexual assault and relationship violence response service. ",
+                        "Smoking cessation, meditation, and nutrition programs"
+                    ],
+                    sgatext:"The fee will see a small increase to fund mandatory overhead budget adjustments. An increase in the fee could result in more resources to CARE and other educational health programming."
+                },
+                'Student Union':{
+                    top3:[
+                        "General maintenance for the Stamp building and facilities.",
+                        "Student staff for the info desk, campus engagement, and student group services.",
+                        "Campus engagement programming such as Homecoming, Alternative Breaks, and MICA/LCSL."
+                    ],
+                    sgatext:"The Stamp fee will increase $1.90 for the purpose of increasing staff support for student groups. With this new funding, the Stamp will be able to increase its student group educational, fundraising, and development programming."
+                },
+                'Facilities Fund':{
+                    top3:["none"],
+                    sgatext:"The Student Facilities Fee is a newly re-purposed fee. Money from this fee is being collected into a fund, similar to the student sustainability fee, that will pay for student driven facilities projects. Starting next year, the Facilities Fund Committee will take ideas for projects like installing outlets on McKeldin Mall."
+                },
+                'Dining': {
+                    top3:[
+                        "Maintenance costs and overhead for the dining halls.",
+                        "Salaries and pay for Dining Services employees in the dining halls and shops.",
+                        "Food and supplies for the dining halls and shops."
+                    ],
+                    sgatext: "The fee will see a small increase to fund mandatory overhead budget adjustments. A larger fee increase could result in better quality dining hall food, longer hours on the weekends, and more dining points per student. "
+                }
+            };
+            for(var department in info){
+                res.find(department).top3 = info[department].top3;
+                res.find(department).sgatext = info[department].sgatext;
+            }
             res.sort(function(a,b){return b.y-a.y});
             console.log(res);
             console.log((undergrad ? "undergrad " : "graduate ") + (onCampus ? "on campus " : "off campus ") + (partTime ? "part time " : "full time ") + (parking ? "has parking" : "no parking "));
