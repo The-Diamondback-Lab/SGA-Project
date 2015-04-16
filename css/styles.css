@@ -238,6 +238,10 @@ section{
     text-align: center;
 }
 
+button{
+    cursor:pointer;
+}
+
 #restart-btn{
     border: white medium solid;
     color: #E51837;
@@ -294,7 +298,6 @@ section{
 }
 .form button:hover, .form button:focus, .gridlink:hover, .gridlink:focus{
     background: rgba(255, 255, 255, 0.7);
-    cursor:pointer;
 }
 .form button:active, .form .selected, .gridlink:active{
     background: #E51837;
