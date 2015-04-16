@@ -477,10 +477,10 @@ angular.module("app", [])
             } else {;
                 $('#info').addClass("show");
                 $('.piesection-name').html($scope.data[index].name);
-                $('.total-funds-text > .tfees').html("$" + $scope.data[index].student_fees_support.formatMoney(2, '.', ','));
-                $('.total-funds-text > .tpercent').html((100 * $scope.data[index].student_fees_support_percentage).toFixed(2) + "%");
-                $('.student-pays-text > .sfees').html("$" + $scope.data[index].y.formatMoney(2, '.', ','));
-                $('.student-pays-text > .spercent').html((100 * $scope.data[index].y / $scope.TOTAL_STUDENT_FUNDS).toFixed(2) + "%");
+                $('.total-funds-text > .tfees').html("$" + $scope.data[index].student_fees_support.formatMoney(0, '.', ','));
+                $('.total-funds-text > .tpercent').html((100 * $scope.data[index].student_fees_support_percentage).toFixed(0) + "%");
+                $('.student-pays-text > .sfees').html("$" + $scope.data[index].y.formatMoney(0, '.', ','));
+                $('.student-pays-text > .spercent').html((100 * $scope.data[index].y / $scope.TOTAL_STUDENT_FUNDS).toFixed(0) + "%");
                 $('#info #expenses').html("");
                 for(var k = 0; k < Math.min($scope.data[index].top3.length, 3); k++){
                     var expenses = $scope.data[index].top3[k];
