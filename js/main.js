@@ -497,7 +497,7 @@ angular.module("app", [])
         $scope.nodes = [
             {id:0, name: ".item0", next: [1, 2], q: "Who are you?", ans:["Undergraduate","Graduate"]},
             {id:1, name: ".item1", next: [3, 2], q: "Where do you live?", ans:["On Campus","Off Campus"]},
-            {id:2, name: ".item2", next: [3, 3], q: "Are you a part time student?", ans:["Yes","No"]},
+            {id:2, name: ".item2", next: [3, 3], q: "Are you a part-time student?", ans:["Yes","No"]},
             {id:3, name: ".item3", next: false, q: "Do you park?", ans:["Yes","No"]}
         ];
         
