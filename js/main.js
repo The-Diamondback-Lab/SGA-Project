@@ -518,9 +518,9 @@ angular.module("app", [])
                 {name: 'Library', y: (partTime ? 50 : 100), total_funds: 24175416.67, student_fees_support: 2901050, id: 8},
                 {name: 'Nyumburu', y: (partTime ? 9.84 : 19.68), total_funds: 787284.81, student_fees_support: 746346, id: 9},
                 {name: 'ResLife', y: (onCampus ? 6424 : 0), total_funds: 56186160, student_fees_support: 56186160, id: 10},
-                {name: 'Dining', y: (onCampus ? 4209 : 0), total_funds: 35614182, student_fees_support: 35614182, id: 11},
+                {name: 'Dining Services', y: (onCampus ? 4209 : 0), total_funds: 35614182, student_fees_support: 35614182, id: 11},
                 {name: 'Student Union', y:(partTime ? 160.24 : 320.48), total_funds: 11668676.25,  student_fees_support: 9334941, id: 12},
-                {name: 'Facilities Fund', y: (partTime ? 9.04 : 18.08), total_funds: 1954525, student_fees_support: 1954525, id: 13},
+                {name: 'Facilities Management', y: (partTime ? 9.04 : 18.08), total_funds: 1954525, student_fees_support: 1954525, id: 13},
                 {name: 'DOTS Parking Fee', y:  parking && (onCampus ? 481 : 249), total_funds: 15325777, student_fees_support: 4398498, id:14}
             ];
             Array.prototype.find = function(str){
@@ -641,11 +641,11 @@ angular.module("app", [])
                     ],
                     sgatext:"The Stamp fee will increase $1.90 for the purpose of increasing staff support for student groups. With this new funding, the Stamp will be able to increase its student group educational, fundraising, and development programming."
                 },
-                'Facilities Fund':{
+                'Facilities Management':{
                     top3:["none"],
                     sgatext:"The Student Facilities Fee is a newly re-purposed fee. Money from this fee is being collected into a fund, similar to the student sustainability fee, that will pay for student driven facilities projects. Starting next year, the Facilities Fund Committee will take ideas for projects like installing outlets on McKeldin Mall."
                 },
-                'Dining': {
+                'Dining Services': {
                     top3:[
                         "Maintenance costs and overhead for the dining halls.",
                         "Salaries and pay for Dining Services employees in the dining halls and shops.",
