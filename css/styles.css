@@ -14,9 +14,6 @@ h3, .h3{font-size:2em}
 video{
     width:100%;
 }
-.collapse-mobile{
-    display:block;
-}
 @media (max-width: 43.75em) {
     h1{font-size:3em}
     h2, .h2{font-size:2em}
@@ -100,7 +97,9 @@ video{
     position:relative;
     height:100vh;
 }
+.back-top-top-btn{
 
+}
 .tabs{
     position:absolute;
     bottom:0;
@@ -192,7 +191,7 @@ section{
 #info{
     background: #fff;
     z-index:1000;
-    border: medium rgba(255,255,255,0.5) solid;
+    border: thin rgba(0,0,0,1) solid;
     position:absolute;
     top:50vh;
     left:50vw;
@@ -239,8 +238,18 @@ section{
     text-align: center;
 }
 
-
+#restart-btn{
+    border: white medium solid;
+    color: #E51837;
+    opacity:0.75;
+    background:white;
+    padding:15px;
+}
+#restart-btn:hover{
+    opacity:1;
+}
 /* ### LANDING PAGE ### */
+
 
 .section-title > .section-content{
     background:rgba(0,0,0,0.5);
@@ -396,9 +405,11 @@ section{
 	background-size: cover;
 }*/
 video#bgvid {
-	position: fixed; right: 0; bottom: 0;
-	min-width: 100vw; min-height: 100vh;
-	width: auto; height: auto; z-index: -100;
+	position: fixed; left:-10%; bottom: 0; z-index: -100;
+    min-width:100%;
+    min-height: 100%;
+    height:auto;
+    width:auto;
 	background: url(/assets/images/mckeldin.png) cover;
 }
 

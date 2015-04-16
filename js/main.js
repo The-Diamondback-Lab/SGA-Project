@@ -6,7 +6,7 @@ var breadcrumb = [0];
 var MAX_PAGE = 5;
 var top = 0;
 var scrolling = false, display = 1;
-var chart, konami = false, memecount = 0;
+var chart, konami = false, memecount = 0, tabchart = true;;
 var toggle = function(target){
     switch(target){
         case 0:
@@ -14,13 +14,32 @@ var toggle = function(target){
             $("#resulttabs > li")[1].setAttribute("class","");
             $("#chart").css("display","block");
             $("#table").css("display","none");
+            tabchart = true;
             break;
         case 1:
             $("#resulttabs > li")[0].setAttribute("class","");
             $("#resulttabs > li")[1].setAttribute("class","selected");
             $("#chart").css("display","none");
             $("#table").css("display","block");
+            tabchart = false;
             break;
+    }
+    $(window).trigger('resize');
+};
+var scroll = function($scope){
+    $(".content").animate({
+        scrollTop: $(".content section")[currPage].offsetTop, easing: "easeout"
+    }, 750, 0, function () {
+        scrolling = false;
+        if(currPage + 1 < MAX_PAGE){
+            $($(".content section")[currPage + 1]).css("display","none");
+        }
+    });
+    $(".page-indicator li").each(function(){
+        this.setAttribute("id","")
+    });
+    if($scope && currPage > 0){
+        $(".indicator" + (Math.min($scope.currNode.id, currPage - 1)))[0].setAttribute("id","active");
     }
 }
 Number.prototype.formatMoney = function(c, d, t){
@@ -64,6 +83,13 @@ $(function(){
             chart.series[0].data.forEach(function(element){
                 element.select(false);
             });
+       } else if(e.keyCode == 9){
+            e.preventDefault();
+            e.stopPropagation();
+       } else if(e.keyCode == 37){
+
+       } else if(e.keyCode == 39){
+
        }
     });
 
@@ -258,20 +284,25 @@ $(function(){
 
     window.onresize = function(){
         console.log("resized");
-        $("#info").removeClass("show")
+        var reloadInfo = $("#info.show");
+        reloadInfo.removeClass("show");
         setTimeout(function(){
-            $("#info").addClass("show");
+            reloadInfo.addClass("show");
         }, 500);
         $(".content")[0].scrollTop = $(".content section")[currPage].offsetTop;
         if ($(window).width() > 757){
-            $("#table").css("display","none");
-            $("#chart").css("display","block");
+            if(tabchart){
+                chart.setSize($("div.container").width(), $("div.container").height(), false);
+                $("#table").css("display","none");
+                $("#chart").css("display","block"); 
+            } else {
+                $("#table").height($("body").height() - 126 + "px");
+            }
         } else {
-            $("#table").css("display","block");
+            $("#table").css("display","block").height($("body").height() - 126 + "px");
             $("#chart").css("display","none");
             console.log("mobile");
         }
-        chart.setSize($("div.container").width(), $("div.container").height(), false);
     };
     $("#info > .closebtn").click(function(){
         $("#info")[0].setAttribute("class","");
@@ -320,33 +351,20 @@ angular.module("app", [])
                 }
 
                 if(scrolling){
-                    $scope.scroll();
+                    scroll();
                 }
 //                console.log(currPage);
             }
         }
 
-        $scope.start = function(){
+        $scope.start = function(hard){
+            $scope.init();
+            $("#restart-btn").removeClass("show").addClass("hidden");
             breadcrumb.push(currPage);
-            currPage = 1;
+            currPage = hard ? 0 : 1;
             $($(".content section")[1]).css("display","block");
             scrolling = true;
-            $scope.scroll();
-        }
-
-        $scope.scroll = function(){
-            $(".content").animate({
-                scrollTop: $(".content section")[currPage].offsetTop, easing: "easeout"
-            }, 750, 0, function () {
-                scrolling = false;
-                if(currPage + 1 < MAX_PAGE){
-                    $($(".content section")[currPage + 1]).css("display","none");
-                }
-            });
-            $(".page-indicator li").each(function(){
-                this.setAttribute("id","")
-            });
-            $(".indicator" + (Math.min($scope.currNode.id, currPage - 1)))[0].setAttribute("id","active");
+            scroll($scope);
         }
 
         $scope.proceed = function(node, value){
@@ -360,12 +378,12 @@ angular.module("app", [])
 
                 $scope.currNode = $scope.nodes[node.next[value]];
 
-                $scope.scroll();
+                scroll($scope);
             } else {
                 maxPage = MAX_PAGE;
                 currPage = MAX_PAGE;
 
-                $scope.scroll();
+                scroll($scope);
 
                 console.log($scope.answers);
                 $scope.data = $scope.calc($scope.answers);
@@ -444,6 +462,15 @@ angular.module("app", [])
             }
         };
 
+        $scope.init = function(){
+            breadcrumb=[0];
+            currPage = 0;
+            $scope.answers = [];
+            $scope.TOTAL_STUDENT_FUNDS = 0;
+            $scope.TOTAL_FUNDS = 0;
+            $scope.currNode = $scope.nodes[0];
+        }
+
         $scope.show = function(index){
             if ($("#info.show").length > 0){
                 $("#info").removeClass("show");
@@ -468,22 +495,19 @@ angular.module("app", [])
         }
 
         $scope.nodes = [
-            {id:0, name: ".item0", next: [1, 1], q: "Who are you?", ans:["Undergraduate","Graduate"]},
+            {id:0, name: ".item0", next: [1, 2], q: "Who are you?", ans:["Undergraduate","Graduate"]},
             {id:1, name: ".item1", next: [3, 2], q: "Where do you live?", ans:["On Campus","Off Campus"]},
             {id:2, name: ".item2", next: [3, 3], q: "Are you a part time student?", ans:["Yes","No"]},
             {id:3, name: ".item3", next: false, q: "Do you park?", ans:["Yes","No"]}
         ];
-        /* array containing links between form sections (for example you can skip .item2 (are you full time or not) if you said you lived on campus*/
-        $scope.answers = [];
-        
         
         $scope.calc = function(answers){
             var undergrad = (answers[0] == 0),
-                onCampus = (answers[1] == 0),
-                partTime = (!onCampus && (answers[2] == 0)),
-                parking = (!onCampus ? (answers[3] == 0) : (answers[2] == 0));
+                onCampus = (undergrad && (answers[1] == 0)),
+                partTime = undergrad ? (!onCampus && (answers[2] == 0)) : (answers[1] == 0),
+                parking = (undergrad && !onCampus ? (answers[3] == 0) : (answers[2] == 0));
             var res = [
-                {name: 'DOTS', y: (partTime ? 94.54 : 189.08+ (parking && (onCampus ? 481 : 249))), total_funds: 15170015.3, student_fees_support: 9906020, id:0},
+                {name: 'DOTS ShuttleUM', y: (partTime ? 94.54 : 189.08), total_funds: 8434183.77, student_fees_support: 5507522, id:0},
                 {name: 'Performing Arts', y: (partTime ? 27.58 : 55.16), total_funds: 7095464, student_fees_support: 1681625, id: 1},
                 {name: 'CRS', y: (partTime ? 187.96 : 375.92), total_funds: 12911525.88, student_fees_support: 10974797,id: 2},
                 {name: 'Sustainability', y: (undergrad ? (partTime ? 6 : 12) : 0), total_funds: 288510, student_fees_support: 288510, id: 3},
@@ -496,7 +520,8 @@ angular.module("app", [])
                 {name: 'ResLife', y: (onCampus ? 6424 : 0), total_funds: 56186160, student_fees_support: 56186160, id: 10},
                 {name: 'Dining', y: (onCampus ? 4209 : 0), total_funds: 35614182, student_fees_support: 35614182, id: 11},
                 {name: 'Student Union', y:(partTime ? 160.24 : 320.48), total_funds: 11668676.25,  student_fees_support: 9334941, id: 12},
-                {name: 'Facilities Fund', y: (partTime ? 9.04 : 18.08), total_funds: 1954525, student_fees_support: 1954525, id: 13}
+                {name: 'Facilities Fund', y: (partTime ? 9.04 : 18.08), total_funds: 1954525, student_fees_support: 1954525, id: 13},
+                {name: 'DOTS Parking Fee', y:  parking && (onCampus ? 481 : 249), total_funds: 15325777, student_fees_support: 4398498, id:14}
             ];
             Array.prototype.find = function(str){
                 for(var i = 0; i < res.length; i++){
@@ -507,6 +532,14 @@ angular.module("app", [])
             };
             console.log(res.find("Nyumburu"));
             var info = {
+                'DOTS Parking Fee': {
+                    top3: [
+                        "Maintenance, upkeep, and debt service of lots and overhead related to parking on campus.",
+                        "The fee offsets expenses such as state mandated administrative wages and benefits for office staff that provide service and information to parkers",
+                        "Insurance for parking lots "
+                    ],
+                    sgatext: "While there will be no increase next year, over the next few years the parking fee is slated to increase significantly as the number of parking spaces on campus begin to diminish due to construction projects. These fee increases will be done to keep level funding for parking. Currently, the parking fee for at least freshman and sophomore students is projected to disappear in either 2017 or 2018, as only upperclassman will be able to park on campus."
+                },
                 'ResLife': {
                     top3: [
                         "Mandatory residence hall costs such as maintenance, overhead, furniture, and cable fees.",
@@ -515,14 +548,13 @@ angular.module("app", [])
                     ],
                     sgatext: "The ResLife fee is currently slated to increase slightly to pay for increased overhead costs. A potential increase could pay for better furniture, two-ply toilet paper, or better cable services. "
                 },
-                'DOTS': {
+                'DOTS ShuttleUM': {
                     top3: [
                         "All of the regular scheduled shuttle bus service, including daytime (commuter buses and the circulator) and evening (color) routes.",
-                        "Nite Ride,Paratransit services, and miscellaneous services like the airport shuttles.",
-                        "Maintenance and upkeep of lots and overhead related to parking on campus. ",
-                        "DOTS employees and student staff."
+                        "Nite Ride",
+                        "Paratransit services, and miscellaneous services like the airport shuttles."
                     ],
-                    sgatext: "The ShuttleUM fee is going to see two increases next year. $2.23 per student to run the #116 purple, #118 gold, and #122 green evening service routes starting at 10 AM on Saturday and Sunday. $1.50 per student to establish a facilities renewal fund. This money goes into a sort of savings account to fund regular maintenance to shuttle facilities. <br> While there will be no increase next year, over the next few years the parking fee is slated to increase significantly as the number of parking spaces on campus begin to diminish due to construction projects. These fee increases will be done to keep level funding for parking. Currently, the parking fee for at least freshman and sophomore students is projected to disappear in either 2017 or 2018, as only upperclassman will be able to park on campus.  "
+                    sgatext: "The ShuttleUM fee is going to see two increases next year. $2.23 per student to run the #116 purple, #118 gold, and #122 green evening service routes starting at 10 AM on Saturday and Sunday. $1.50 per student to establish a facilities renewal fund. This money goes into a sort of savings account to fund regular maintenance to shuttle facilities."
                 },
                 'CRS': {
                     top3: [
@@ -641,11 +673,13 @@ angular.module("app", [])
                 }
             }
             console.log($scope.TOTAL_FUNDS, $scope.TOTAL_STUDENT_FUNDS);
+            $("#info").removeClass("show");
+            $("#splash").removeClass("hidden").addClass("show");
+            $("#restart-btn").removeClass("hidden").addClass("show");
             return res;
         }
-        $scope.TOTAL_STUDENT_FUNDS = 0;
-        $scope.TOTAL_FUNDS = 0;
-        $scope.currNode = $scope.nodes[0];
+
+        $scope.init();
 
     })
 
