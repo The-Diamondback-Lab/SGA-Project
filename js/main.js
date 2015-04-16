@@ -507,19 +507,19 @@ angular.module("app", [])
                 partTime = undergrad ? (!onCampus && (answers[2] == 0)) : (answers[1] == 0),
                 parking = (undergrad && !onCampus ? (answers[3] == 0) : (answers[2] == 0));
             var res = [
-                {name: 'DOTS ShuttleUM', y: (partTime ? 94.54 : 189.08), total_funds: 8434183.77, student_fees_support: 5507522, id:0},
+                {name: 'DOTS Shuttle-UM', y: (partTime ? 94.54 : 189.08), total_funds: 8434183.77, student_fees_support: 5507522, id:0},
                 {name: 'Performing Arts', y: (partTime ? 27.58 : 55.16), total_funds: 7095464, student_fees_support: 1681625, id: 1},
-                {name: 'CRS', y: (partTime ? 187.96 : 375.92), total_funds: 12911525.88, student_fees_support: 10974797,id: 2},
-                {name: 'Sustainability', y: (undergrad ? (partTime ? 6 : 12) : 0), total_funds: 288510, student_fees_support: 288510, id: 3},
+                {name: 'Campus Recreation Services', y: (partTime ? 187.96 : 375.92), total_funds: 12911525.88, student_fees_support: 10974797,id: 2},
+                {name: 'Student Sustainability', y: (undergrad ? (partTime ? 6 : 12) : 0), total_funds: 288510, student_fees_support: 288510, id: 3},
                 {name: 'Student Activities', y: (undergrad ? (partTime ? 37.52 : 75.04) : 32.30), total_funds: 1383508 + 113930, student_fees_support: 1383508 + 113930, id: 4},
                 {name: 'Student Technology', y: (partTime ? 82 : 164), total_funds: 4780829, student_fees_support: 4780829, id: 5},
                 {name: 'Health Center', y: (partTime ? 39.86 : 79.72), total_funds: 19350700, student_fees_support: 2322084, id: 6},
                 {name: 'Athletics', y: (!undergrad || partTime ? 135.50 : 406.38), total_funds: 63200000, student_fees_support: 11376000, id: 7},
-                {name: 'Library', y: (partTime ? 50 : 100), total_funds: 24175416.67, student_fees_support: 2901050, id: 8},
+                {name: 'Library Technology', y: (partTime ? 50 : 100), total_funds: 24175416.67, student_fees_support: 2901050, id: 8},
                 {name: 'Nyumburu', y: (partTime ? 9.84 : 19.68), total_funds: 787284.81, student_fees_support: 746346, id: 9},
-                {name: 'ResLife', y: (onCampus ? 6424 : 0), total_funds: 56186160, student_fees_support: 56186160, id: 10},
+                {name: 'Department of Resident Life', y: (onCampus ? 6424 : 0), total_funds: 56186160, student_fees_support: 56186160, id: 10},
                 {name: 'Dining Services', y: (onCampus ? 4209 : 0), total_funds: 35614182, student_fees_support: 35614182, id: 11},
-                {name: 'Student Union', y:(partTime ? 160.24 : 320.48), total_funds: 11668676.25,  student_fees_support: 9334941, id: 12},
+                {name: 'Stamp Student Union', y:(partTime ? 160.24 : 320.48), total_funds: 11668676.25,  student_fees_support: 9334941, id: 12},
                 {name: 'Facilities Management', y: (partTime ? 9.04 : 18.08), total_funds: 1954525, student_fees_support: 1954525, id: 13},
                 {name: 'DOTS Parking Fee', y:  parking && (onCampus ? 481 : 249), total_funds: 15325777, student_fees_support: 4398498, id:14}
             ];
@@ -547,7 +547,7 @@ angular.module("app", [])
                     ],
                     sgatext: "The Resident Life fee will increase slightly to pay for increased overhead costs. A potential increase could pay for better furniture, two-ply toilet paper or better cable services. "
                 },
-                'Department of Transportation Services Shuttle-UM': {
+                'DOTS Shuttle-UM': {
                     top3: [
                         "Regularly scheduled shuttle bus service, including commuter buses, the circulator and evening routes",
                         "NITE Ride",
@@ -639,7 +639,7 @@ angular.module("app", [])
                     ],
                     sgatext:"The Stamp fee will increase $1.90 to expand staff support and educational, fundraising and development programming for student groups."
                 },
-                'Facilities Fund':{
+                'Facilities Management':{
                     top3:["none"],
                     sgatext:"The student facilities fee is a newly repurposed fee. Money is being collected into a fund that will pay for student-driven facilities projects, such as installing outlets on McKeldin Mall, starting next year."
                 },
