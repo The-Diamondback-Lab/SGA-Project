@@ -477,10 +477,10 @@ angular.module("app", [])
             } else {;
                 $('#info').addClass("show");
                 $('.piesection-name').html($scope.data[index].name);
-                $('.total-funds-text > .tfees').html("$" + $scope.data[index].student_fees_support.formatMoney(0, '.', ','));
-                $('.total-funds-text > .tpercent').html((100 * $scope.data[index].student_fees_support_percentage).toFixed(0) + "%");
-                $('.student-pays-text > .sfees').html("$" + $scope.data[index].y.formatMoney(0, '.', ','));
-                $('.student-pays-text > .spercent').html((100 * $scope.data[index].y / $scope.TOTAL_STUDENT_FUNDS).toFixed(0) + "%");
+                $('.total-funds-text > .tfees').html("$" + $scope.data[index].student_fees_support.formatMoney(2, '.', ','));
+                $('.total-funds-text > .tpercent').html((100 * $scope.data[index].student_fees_support_percentage).toFixed(2) + "%");
+                $('.student-pays-text > .sfees').html("$" + $scope.data[index].y.formatMoney(2, '.', ','));
+                $('.student-pays-text > .spercent').html((100 * $scope.data[index].y / $scope.TOTAL_STUDENT_FUNDS).toFixed(2) + "%");
                 $('#info #expenses').html("");
                 for(var k = 0; k < Math.min($scope.data[index].top3.length, 3); k++){
                     var expenses = $scope.data[index].top3[k];
@@ -493,7 +493,7 @@ angular.module("app", [])
                 $('#info #text').html($scope.data[index].sgatext);
             }
         }
-        
+
         $scope.nodes = [
             {id:0, name: ".item0", next: [1, 2], q: "Who are you?", ans:["Undergraduate","Graduate"]},
             {id:1, name: ".item1", next: [3, 2], q: "Where do you live?", ans:["On Campus","Off Campus"]},
@@ -534,124 +534,122 @@ angular.module("app", [])
             var info = {
                 'DOTS Parking Fee': {
                     top3: [
-                        "Maintenance, upkeep, and debt service of lots and overhead related to parking on campus.",
-                        "The fee offsets expenses such as state mandated administrative wages and benefits for office staff that provide service and information to parkers",
-                        "Insurance for parking lots "
+                        "Maintenance and upkeep of lots and overhead related to campus parking",
+                        "DOTS employees and student staff"
                     ],
-                    sgatext: "While there will be no increase next year, over the next few years the parking fee is slated to increase significantly as the number of parking spaces on campus begin to diminish due to construction projects. These fee increases will be done to keep level funding for parking. Currently, the parking fee for at least freshman and sophomore students is projected to disappear in either 2017 or 2018, as only upperclassman will be able to park on campus."
+                    sgatext: "There will be no fee increase next year. However, the parking fee is slated to increase significantly in following years as the number of parking spaces on the campus decrease due to construction projects. The parking fee for on-campus residents is projected to disappear along with resident parking in either 2017 or 2018."
                 },
-                'ResLife': {
+                'Department of Resident Life': {
                     top3: [
-                        "Mandatory residence hall costs such as maintenance, overhead, furniture, and cable fees.",
-                        "Residence life staff such as RAs, housekeeping, and 4Work",
-                        "The Residence Hall Association (RHA)"
+                        "Mandatory dorm costs such as maintenance, overhead, furniture and cable",
+                        "Personnel including resident assistants, housekeeping, and 4-WORK staff",
+                        "The Residence Hall Association"
                     ],
-                    sgatext: "The ResLife fee is currently slated to increase slightly to pay for increased overhead costs. A potential increase could pay for better furniture, two-ply toilet paper, or better cable services. "
+                    sgatext: "The Resident Life fee will increase slightly to pay for increased overhead costs. A potential increase could pay for better furniture, two-ply toilet paper or better cable services. "
                 },
-                'DOTS ShuttleUM': {
+                'Department of Transportation Services Shuttle-UM': {
                     top3: [
-                        "All of the regular scheduled shuttle bus service, including daytime (commuter buses and the circulator) and evening (color) routes.",
-                        "Nite Ride",
-                        "Paratransit services, and miscellaneous services like the airport shuttles."
+                        "Regularly scheduled shuttle bus service, including commuter buses, the circulator and evening routes",
+                        "NITE Ride",
+                        "Paratransit services and miscellaneous buses, such as the airport shuttles"
                     ],
-                    sgatext: "The ShuttleUM fee is going to see two increases next year. $2.23 per student to run the #116 purple, #118 gold, and #122 green evening service routes starting at 10 AM on Saturday and Sunday. $1.50 per student to establish a facilities renewal fund. This money goes into a sort of savings account to fund regular maintenance to shuttle facilities."
+                    sgatext: "The Shuttle-UM fee will see two increases next year — $2.23 per student to run the Purple, Gold and Green evening service routes starting at 10:00 a.m. on Saturday and Sunday and $1.50 per student to establish a facilities renewal fund for regular maintenance of shuttle facilities."
                 },
-                'CRS': {
+                'Campus Recreation Services': {
                     top3: [
-                        "Employee salaries, split approximately equally between full-time staff and student staff",
-                        "Operation and upkeep of recreational facilities, like Eppley, Ritchie, the turf complex, etc.",
-                        "Program operating expenses, including materials and supplies for Intramurals, equipment issue, Maryland Adventure Program and other expendable goods."
+                        "Employee salaries, split equally between full-time and student staff",
+                        "Operation and upkeep costs of recreational facilities",
+                        "Program operating expenses, including materials for intramurals, equipment issue and the Maryland Adventure Program"
                     ],
-                    sgatext: "CRS is currently looking at costs associated with the long discussed South Campus Recreation center to determine its feasibility. CRS will be discussing this issue with various student constituencies over the next several months if it determines a fee increase if necessary to build the new facility, however there are no other plans at this point in time."
+                    sgatext: "CRS is currently looking at the feasibility of the long-discussed South Campus recreation center. If officials determine a fee increase is necessary to build the facility, they’ll discuss the issue with a number of student groups."
                 },
                 'Student Activities': {
                     top3: (undergrad) ? [
-                        "The SGA provides over $600,000 in funding to over 400 student groups on campus. The vast majority of student group programming is funded through SGA allocations.",
-                        "Funding for SEE events such as Art Attack and Homecoming Comedy Show",
+                        "More than $600,000 in student group funding, allocated through the Student Government Association",
+                        "Student Entertainment Events programming, including Art Attack and the Homecoming Comedy Show",
                         "The Undergraduate Legal Aid Office"
                     ] : [
-                        "Tuition remission and stipends for GSG executives.",
-                        "Funding for events such as GRID (Graduate Research Interaction Day), Cherry Blossom Cruise, and King’s Dominion Trip.",
-                        "Funding to co-sponsor graduate student group events. "
+                        "Tuition remission and stipends for Graduate Student Government executives",
+                        "Events such as Graduate Research Interaction Day, Cherry Blossom Cruise and King’s Dominion Trip",
+                        "Funding to co-sponsor graduate student group events"
                     ],
                     sgatext: (undergrad) ? 
-                        "Over recent months student groups have not been able to be fully funded for their events because of a lack of funds in the allocated portion of money to student groups from the SAF. After thorough research the SGA decided that the most effective solution would be to raise the SAF by $5.28. In the upcoming election, students will be asked to approve or reject this increase." :
-                        "The GSG will not be pursuing a fee increase, however a possible fee increase would go to increase funding for co-sponsorships, more sophisticated lobbying efforts on behalf of graduate students, and potentially more events like GRID and the Cherry Blossom Cruise. "
+                        "An increase would make more money available for 400-plus student groups, some of which have not been able to fully fund their events. The SGA has proposed an increase of $5.28 that students will vote on in this year’s elections." :
+                        "The GSG will not be pursuing a fee increase, but a possible fee increase would go to funding for co-sponsorships, more sophisticated lobbying efforts on behalf of graduate students and potentially more events."
                 },
-                'Sustainability':{
+                'Student Sustainability':{
                     top3:[
-                        "All expenses from this fund are grant-funded projects to improve the environmental performance of the campus. ",
-                        "To name a few examples, the fee has gone to supporting: student led food gardens at St. Mary’s Hall, Hillel, South Campus Diner and the School of Public Health, increasing bicycle parking, helping the Food Recovery Network, putting solar panels on top of the AV Williams Building, expanding compost collection in the Stamp Food Court"
+                        "Grant funding for projects to improve the environmental performance of the campus, such as food gardens, increased bicycle parking and solar panels on top of the A.V. Williams Building"
                     ],
-                    sgatext:"The sustainability fee is not set to increase. However, a fee increase would result in more money to fund more sustainability projects around campus."
+                    sgatext:"The sustainability fee is not set to change, but a potential increase would result in more funding for more sustainability projects around the campus."
                 },
                 'Athletics':{
                     top3:[
-                        "Student tickets for all athletics events. Including 10,000 seats for football and 6,000 for basketball",
-                        "Debt service on the Xfinity Center",
-                        "Internships and part-time student jobs in the Athletic Department"
+                        "Student tickets for all athletic events, including 10,000 seats for football and 6,000 for basketball",
+                        "Debt service on Xfinity Center",
+                        "Internships and part-time student jobs in the athletic department"
                     ],
-                    sgatext:"The Athletic Department is not asking for a fee increase because of Big Ten revenues. If the fee were to increase, revenue would go towards more giveaways such as t-shirts for students."
+                    sgatext:"The athletics fee is not set to change, but a potential increase would go toward giveaways, such as student T-shirts."
                 },
                 'Nyumburu':{
                     top3:[
-                        "Operations for student programming activities ",
+                        "Operating costs for student programming and activities",
                         "Staff and adjunct instructor salaries and health benefits",
-                        "Supplies and furniture "
+                        "Supplies and furniture"
                     ],
-                    sgatext: "Nyumburu is planning to ask for a fee increase to host conferences and learning activities in collaboration with academic departments to increase outreach into the Prince George's Community to bring in \"at-risk\" students and expose them to the benefits of higher education."
+                    sgatext: "A fee increase would allow Nyumburu to host conferences and activities for at-risk Prince George’s County students in collaboration with academic departments. Officials have proposed a fee increase, but the amount is still being determined."
                 },
                 'Performing Arts': {
                     top3:[
-                        "General maintenance and upkeep of the operations of the Clarice Smith Performing Arts Center. ",
-                        "Nearly one-third of fee support goes to internships, graduate assistant learning and regular student employment",
-                        "“Free UMD Student Ticket Mondays” to performances. Free access and engagement with artists through workshops and festivals such as the NextNOW Fest."
+                        "Clarice Smith Performing Arts Center maintenance and upkeep ",
+                        "Internships, graduate assistant learning and regular student employment",
+                        "Free student programming, including performance tickets, workshops and festivals such as NextNOW Fest"
                     ],
-                    sgatext:"The fee will see a small increase to fund mandatory overhead budget adjustments. A potential increase could result in increased arts programming by The Clarice as a whole. "
+                    sgatext:"The fee will see a small increase to fund mandatory overhead budget adjustments. A potential increase could result in more arts programming by The Clarice."
                 },
                 'Student Technology':{
                     top3:[
-                        "Technology infrastructure across campus, including computers, internet service, wifi, printers, and software.",
-                        "Infrastructure improvements, like updated software and hardware and additional services.",
-                        "Classroom technology, including workstations, projectors, cameras, etc."
+                        "Technology infrastructure across the campus, including computers, internet, Wi-Fi, printers and software",
+                        "Infrastructure improvements such as updated software and hardware",
+                        "Classroom technology"
                     ],
-                    sgatext: "There is no request for an increase in this fee. A potential fee increase could result in more wifi infrastructure and more free software for students."
+                    sgatext: "There is no request for an increase in this fee. A potential fee increase could cover additional Wi-Fi infrastructure and free software for students."
                 },
-                'Library':{
+                'Library Technology':{
                     top3:[
-                        "Acquisition, maintenance, and refresh cycle of public workstations, loaner equipment, scanners, multimedia production technology, emerging technologies, and software.",
-                        "Student employees in the Libraries.",
-                        "Acquisition of E-Resources. "
+                        "Acquisition, maintenance and refresh cycle of public workstations, loaner equipment, scanners, multimedia production technology, emerging technologies and software",
+                        "University Libraries student employees",
+                        "Acquisition of e-resources"
                     ],
-                    sgatext: "The Libraries is not asking asking for a fee increase at this point. However, a potential fee increase could go to increased staff support emerging technologies and media production, more collaboration workstations, more equipment loans, and expansion of engineering makerspace in McKeldin."
+                    sgatext: "University Libraries is not asking asking for a fee increase at this point. However, a potential fee increase could go to increased staff support emerging technologies and media production, more collaboration workstations, more equipment loans and expansion of engineering MakerSpace in McKeldin Library."
                 },
                 'Health Center':{
                     top3:[
-                        "General health care promotion programs.",
-                        "Campus Advocates Respond and Educate (CARE) to Stop Violence, a peer based sexual assault and relationship violence response service. ",
-                        "Smoking cessation, meditation, and nutrition programs"
+                        "General health care promotion programs",
+                        "Campus Advocates Respond and Educate (CARE) to Stop Violence, a peer-based sexual assault and relationship violence response service",
+                        "Smoking cessation, meditation and nutrition programs"
                     ],
-                    sgatext:"The fee will see a small increase to fund mandatory overhead budget adjustments. An increase in the fee could result in more resources to CARE and other educational health programming."
+                    sgatext:"The fee will see a small increase to fund mandatory overhead budget adjustments. An increase in the fee could result in more resources for CARE and other educational health programming."
                 },
-                'Student Union':{
+                'Stamp Student Union':{
                     top3:[
-                        "General maintenance for the Stamp building and facilities.",
-                        "Student staff for the info desk, campus engagement, and student group services.",
-                        "Campus engagement programming such as Homecoming, Alternative Breaks, and MICA/LCSL."
+                        "General maintenance for Stamp Student Union",
+                        "Student staff for the information desk, campus engagement and student group services",
+                        "Campus engagement programming such as homecoming, Alternative Breaks and Office of Multicultural Involvement & Community Advocacy and Leadership & Community Service-Learning programs"
                     ],
-                    sgatext:"The Stamp fee will increase $1.90 for the purpose of increasing staff support for student groups. With this new funding, the Stamp will be able to increase its student group educational, fundraising, and development programming."
+                    sgatext:"The Stamp fee will increase $1.90 to expand staff support and educational, fundraising and development programming for student groups."
                 },
-                'Facilities Management':{
+                'Facilities Fund':{
                     top3:["none"],
-                    sgatext:"The Student Facilities Fee is a newly re-purposed fee. Money from this fee is being collected into a fund, similar to the student sustainability fee, that will pay for student driven facilities projects. Starting next year, the Facilities Fund Committee will take ideas for projects like installing outlets on McKeldin Mall."
+                    sgatext:"The student facilities fee is a newly repurposed fee. Money is being collected into a fund that will pay for student-driven facilities projects, such as installing outlets on McKeldin Mall, starting next year."
                 },
                 'Dining Services': {
                     top3:[
-                        "Maintenance costs and overhead for the dining halls.",
-                        "Salaries and pay for Dining Services employees in the dining halls and shops.",
-                        "Food and supplies for the dining halls and shops."
+                        "Maintenance costs and overhead costs for the dining halls",
+                        "Salaries and pay for dining hall and shop employees",
+                        "Food and supplies for the dining halls and shops"
                     ],
-                    sgatext: "The fee will see a small increase to fund mandatory overhead budget adjustments. A larger fee increase could result in better quality dining hall food, longer hours on the weekends, and more dining points per student. "
+                    sgatext: "The fee will see a small increase to fund mandatory overhead budget adjustments. A larger potential fee increase could result in better quality dining hall food, longer hours on the weekends and more dining points per student."
                 }
             };
             for(var department in info){
