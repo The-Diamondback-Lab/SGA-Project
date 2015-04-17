@@ -496,9 +496,9 @@ angular.module("app", [])
 
         $scope.nodes = [
             {id:0, name: ".item0", next: [1, 2], q: "Who are you?", ans:["Undergraduate","Graduate"]},
-            {id:1, name: ".item1", next: [3, 2], q: "Where do you live?", ans:["On Campus","Off Campus"]},
+            {id:1, name: ".item1", next: [3, 2], q: "Where do you live?", ans:["On the campus","Off the campus"]},
             {id:2, name: ".item2", next: [3, 3], q: "Are you a part-time student?", ans:["Yes","No"]},
-            {id:3, name: ".item3", next: false, q: "Do you park?", ans:["Yes","No"]}
+            {id:3, name: ".item3", next: false, q: "Do you park on the campus?", ans:["Yes","No"]}
         ];
         
         $scope.calc = function(answers){
@@ -535,14 +535,14 @@ angular.module("app", [])
                 'DOTS Parking Fee': {
                     top3: [
                         "Maintenance and upkeep of lots and overhead related to campus parking",
-                        "DOTS employees and student staff"
+                        "Pay for DOTS employees and student staff"
                     ],
-                    sgatext: "There will be no fee increase next year. However, the parking fee is slated to increase significantly in following years as the number of parking spaces on the campus decrease due to construction projects. The parking fee for on-campus residents is projected to disappear along with resident parking in either 2017 or 2018."
+                    sgatext: "There will be no fee increase next year. However, the parking fee is slated to increase significantly in following years as the number of parking spaces on the campus decreases due to construction projects. The parking fee for on-campus residents is projected to disappear along with resident parking in either 2017 or 2018."
                 },
                 'Department of Resident Life': {
                     top3: [
                         "Mandatory dorm costs such as maintenance, overhead, furniture and cable",
-                        "Personnel including resident assistants, housekeeping, and 4-WORK staff",
+                        "Personnel including resident assistants, housekeeping and 4-WORK staff",
                         "The Residence Hall Association"
                     ],
                     sgatext: "The Resident Life fee will increase slightly to pay for increased overhead costs. A potential increase could pay for better furniture, two-ply toilet paper or better cable services. "
@@ -558,7 +558,7 @@ angular.module("app", [])
                 'Campus Recreation Services': {
                     top3: [
                         "Employee salaries, split equally between full-time and student staff",
-                        "Operation and upkeep costs of recreational facilities",
+                        "Operation and upkeep costs for recreational facilities",
                         "Program operating expenses, including materials for intramurals, equipment issue and the Maryland Adventure Program"
                     ],
                     sgatext: "CRS is currently looking at the feasibility of the long-discussed South Campus recreation center. If officials determine a fee increase is necessary to build the facility, they’ll discuss the issue with a number of student groups."
@@ -575,7 +575,7 @@ angular.module("app", [])
                     ],
                     sgatext: (undergrad) ? 
                         "An increase would make more money available for 400-plus student groups, some of which have not been able to fully fund their events. The SGA has proposed an increase of $5.28 that students will vote on in this year’s elections." :
-                        "The GSG will not be pursuing a fee increase, but a possible fee increase would go to funding for co-sponsorships, more sophisticated lobbying efforts on behalf of graduate students and potentially more events."
+                        "The GSG will not be pursuing a fee increase, but a possible fee increase would go toward funding for co-sponsorships, more sophisticated lobbying efforts on behalf of graduate students and potentially more events."
                 },
                 'Student Sustainability':{
                     top3:[
@@ -621,9 +621,9 @@ angular.module("app", [])
                         "University Libraries student employees",
                         "Acquisition of e-resources"
                     ],
-                    sgatext: "University Libraries is not asking asking for a fee increase at this point. However, a potential fee increase could go to increased staff support emerging technologies and media production, more collaboration workstations, more equipment loans and expansion of engineering MakerSpace in McKeldin Library."
+                    sgatext: "University Libraries is not asking asking for a fee increase at this point. However, a potential fee increase could fund increased staff support, emerging technologies and media production, more collaboration workstations, more equipment loans and expansion of the engineering MakerSpace in McKeldin Library."
                 },
-                'Health Center':{
+                'University Health Center':{
                     top3:[
                         "General health care promotion programs",
                         "Campus Advocates Respond and Educate (CARE) to Stop Violence, a peer-based sexual assault and relationship violence response service",
@@ -635,7 +635,7 @@ angular.module("app", [])
                     top3:[
                         "General maintenance for Stamp Student Union",
                         "Student staff for the information desk, campus engagement and student group services",
-                        "Campus engagement programming such as homecoming, Alternative Breaks and Office of Multicultural Involvement & Community Advocacy and Leadership & Community Service-Learning programs"
+                        "Campus engagement programming, such as homecoming, Alternative Breaks and Office of Multicultural Involvement & Community Advocacy and Leadership & Community Service-Learning programs"
                     ],
                     sgatext:"The Stamp fee will increase $1.90 to expand staff support and educational, fundraising and development programming for student groups."
                 },
@@ -649,7 +649,7 @@ angular.module("app", [])
                         "Salaries and pay for dining hall and shop employees",
                         "Food and supplies for the dining halls and shops"
                     ],
-                    sgatext: "The fee will see a small increase to fund mandatory overhead budget adjustments. A larger potential fee increase could result in better quality dining hall food, longer hours on the weekends and more dining points per student."
+                    sgatext: "The fee will see a small increase to fund mandatory overhead budget adjustments. A larger potential fee increase could result in better-quality dining hall food, longer hours on the weekends and more dining points per student."
                 }
             };
             for(var department in info){
