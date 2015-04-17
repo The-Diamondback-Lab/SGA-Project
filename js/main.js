@@ -520,7 +520,7 @@ angular.module("app", [])
                 {name: 'Department of Resident Life', y: (onCampus ? 6424 : 0), total_funds: 56186160, student_fees_support: 56186160, id: 10},
                 {name: 'Dining Services', y: (onCampus ? 4209 : 0), total_funds: 35614182, student_fees_support: 35614182, id: 11},
                 {name: 'Stamp Student Union', y:(partTime ? 160.24 : 320.48), total_funds: 11668676.25,  student_fees_support: 9334941, id: 12},
-                {name: 'Facilities Management', y: (partTime ? 9.04 : 18.08), total_funds: 1954525, student_fees_support: 1954525, id: 13},
+                {name: 'Facilities Fund', y: (partTime ? 9.04 : 18.08), total_funds: 1954525, student_fees_support: 1954525, id: 13},
                 {name: 'DOTS Parking Fee', y:  parking && (onCampus ? 481 : 249), total_funds: 15325777, student_fees_support: 4398498, id:14}
             ];
             Array.prototype.find = function(str){
