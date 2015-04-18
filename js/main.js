@@ -53,6 +53,7 @@ var n = this,
    return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
  };
 $(function(){
+    console.log(document.documentElement.clientWidth);
     // https://github.com/tommcfarlin/konami-code Thanks to tommcfarlin for awesome konami code js!
     console.log("%c konami code", 'background: #222; color: #bada55; font-size:3em');
     $(window).konami(
@@ -283,6 +284,7 @@ $(function(){
     Highcharts.setOptions(Highcharts.theme);
 
     window.onresize = function(){
+        console.log(document.documentElement.clientWidth);
         console.log("resized");
         var reloadInfo = $("#info.show");
         reloadInfo.removeClass("show");
@@ -513,14 +515,14 @@ angular.module("app", [])
                 {name: 'Student Sustainability', y: (undergrad ? (partTime ? 6 : 12) : 0), total_funds: 288510, student_fees_support: 288510, id: 3},
                 {name: 'Student Activities', y: (undergrad ? (partTime ? 37.52 : 75.04) : 32.30), total_funds: 1383508 + 113930, student_fees_support: 1383508 + 113930, id: 4},
                 {name: 'Student Technology', y: (partTime ? 82 : 164), total_funds: 4780829, student_fees_support: 4780829, id: 5},
-                {name: 'Health Center', y: (partTime ? 39.86 : 79.72), total_funds: 19350700, student_fees_support: 2322084, id: 6},
+                {name: 'University Health Center', y: (partTime ? 39.86 : 79.72), total_funds: 19350700, student_fees_support: 2322084, id: 6},
                 {name: 'Athletics', y: (!undergrad || partTime ? 135.50 : 406.38), total_funds: 63200000, student_fees_support: 11376000, id: 7},
                 {name: 'Library Technology', y: (partTime ? 50 : 100), total_funds: 24175416.67, student_fees_support: 2901050, id: 8},
                 {name: 'Nyumburu', y: (partTime ? 9.84 : 19.68), total_funds: 787284.81, student_fees_support: 746346, id: 9},
-                {name: 'Department of Resident Life', y: (onCampus ? 6424 : 0), total_funds: 56186160, student_fees_support: 56186160, id: 10},
+                {name: 'Resident Life', y: (onCampus ? 6424 : 0), total_funds: 56186160, student_fees_support: 56186160, id: 10},
                 {name: 'Dining Services', y: (onCampus ? 4209 : 0), total_funds: 35614182, student_fees_support: 35614182, id: 11},
                 {name: 'Stamp Student Union', y:(partTime ? 160.24 : 320.48), total_funds: 11668676.25,  student_fees_support: 9334941, id: 12},
-                {name: 'Facilities Fund', y: (partTime ? 9.04 : 18.08), total_funds: 1954525, student_fees_support: 1954525, id: 13},
+                {name: 'Facilities Management', y: (partTime ? 9.04 : 18.08), total_funds: 1954525, student_fees_support: 1954525, id: 13},
                 {name: 'DOTS Parking Fee', y:  parking && (onCampus ? 481 : 249), total_funds: 15325777, student_fees_support: 4398498, id:14}
             ];
             Array.prototype.find = function(str){
@@ -539,7 +541,7 @@ angular.module("app", [])
                     ],
                     sgatext: "There will be no fee increase next year. However, the parking fee is slated to increase significantly in following years as the number of parking spaces on the campus decreases due to construction projects. The parking fee for on-campus residents is projected to disappear along with resident parking in either 2017 or 2018."
                 },
-                'Department of Resident Life': {
+                'Resident Life': {
                     top3: [
                         "Mandatory dorm costs such as maintenance, overhead, furniture and cable",
                         "Personnel including resident assistants, housekeeping and 4-WORK staff",

@@ -14,7 +14,8 @@ h3, .h3{font-size:2em}
 video{
     width:100%;
 }
-@media (max-width: 43.75em) {
+@media only screen
+    and (max-device-width: 43.75em) {
     h1{font-size:3em}
     h2, .h2{font-size:2em}
     h3, .h3{font-size:1.5em}
@@ -47,7 +48,8 @@ video{
         vertical-align:top;
     }
 }
-@media (min-width: 43.75em){
+@media only screen
+    and (min-device-width: 43.75em){
     .desktop-default{
         display:;
     }
@@ -74,7 +76,8 @@ video{
 .shown{
     display;
 }
-@media (max-width: 36em) {
+@media only screen
+    and (max-device-width: 36em) {
     h1{font-size:2.3em}
     h2, .h2{font-size:1.75em}
     h3, .h3{font-size:1.25em}
