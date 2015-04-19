@@ -14,8 +14,7 @@ h3, .h3{font-size:2em}
 video{
     width:100%;
 }
-@media only screen
-    and (max-device-width: 43.75em) {
+@media only screen and (max-device-width: 43.75em) and (-webkit-min-device-pixel-ratio: 2), screen and (max-width: 43.75em) and (-webkit-device-pixel-ratio: 1) {
     h1{font-size:3em}
     h2, .h2{font-size:2em}
     h3, .h3{font-size:1.5em}
@@ -47,9 +46,111 @@ video{
         width:95%; 
         vertical-align:top;
     }
+    .section-content{
+        padding: 30vh 10vw;
+        height:100vh;
+        text-align: center;
+    }
+    .section-title button{
+        border: thick white solid;
+        color: white;
+        background: transparent;
+        padding:15px;
+        margin:15px;
+        min-width:300px;
+        min-height: 100px;
+        margin-top:100px;
+    }
+    .form button {
+        border: thick #E51837 solid;
+        color: #E51837;
+        background: white;
+        padding:15px;
+        margin:15px;
+        min-width:300px;
+
+    }
+    #info.show, #info.resized{
+        position:absolute;
+        top: 0; left:0;
+        width:100%;
+        height:100%;
+        padding:15px;
+        -webkit-animation: showdesc 0.5s cubic-bezier(.16,.84,.44,1) 0.6 forwards;
+        -moz-animation: showdesc 0.5s cubic-bezier(.16,.84,.44,1) 0.6forwards;
+        -o-animation: showdesc 0.5s cubic-bezier(.16,.84,.44,1) 0.6 forwards;
+
+    }
 }
-@media only screen
-    and (min-device-width: 43.75em){
+@media only screen and (max-device-width: 43.75em) and (-webkit-min-device-pixel-ratio: 2), screen and (max-width: 43.75em) and (-webkit-device-pixel-ratio: 2) {
+    h1{font-size:2.5em}
+    h2, .h2{font-size:1.5em}
+    h3, .h3{font-size:1em}
+    video{
+        height:100vh;
+    }
+    .desktop-only{
+        visibility: hidden;
+    }
+    .mobile-fill{
+        height:calc(100%-104px);
+    }
+    .mobile-default{
+        display:;
+    }
+    .desktop-default{
+        display:none;
+    }
+    .col-mobile-0{
+        display:none;
+    }
+    .col-mobile-1{
+        display:inline-block;
+        width:47.5%; 
+        vertical-align:top;
+    }
+    .col-mobile-2{
+        display:inline-block;
+        width:95%; 
+        vertical-align:top;
+    }
+    .section-content{
+        padding: 15vh 5vw;
+        height:100vh;
+        text-align: center;
+    }
+    .section-title button{
+        border: thick white solid;
+        color: white;
+        background: transparent;
+        padding:15px;
+        margin:15px;
+        min-width:90%;
+        min-height: 100px;
+        margin-top:100px;
+    }
+    .form button {
+        border: thick #E51837 solid;
+        color: #E51837;
+        background: white;
+        padding:15px;
+        margin:15px;
+        min-width:90%;
+
+    }
+    #info.show, #info.resized{
+        position:absolute;
+        top: 0; left:0;
+        width:100%;
+        height:100%;
+        padding:15px;
+        -webkit-animation: showdesc 0.5s cubic-bezier(.16,.84,.44,1) 0.6 forwards;
+        -moz-animation: showdesc 0.5s cubic-bezier(.16,.84,.44,1) 0.6forwards;
+        -o-animation: showdesc 0.5s cubic-bezier(.16,.84,.44,1) 0.6 forwards;
+
+    }
+}
+@media only screen and (min-device-width: 43.75em){
     .desktop-default{
         display:;
     }
@@ -68,6 +169,41 @@ video{
         display:inline-block;
         width:95%; 
         vertical-align:top;
+    }
+    .section-content{
+        padding: 30vh 10vw;
+        height:100vh;
+        text-align: center;
+    }
+    .section-title button{
+        border: thick white solid;
+        color: white;
+        background: transparent;
+        padding:15px;
+        margin:15px;
+        min-width:300px;
+        min-height: 100px;
+        margin-top:100px;
+    }
+    .form button {
+        border: thick #E51837 solid;
+        color: #E51837;
+        background: white;
+        padding:15px;
+        margin:15px;
+        min-width:300px;
+
+    }
+    #info.show, #info.resized{
+        position:absolute;
+        top: 10%; left:10%;
+        width:80%;
+        height:80%;
+        padding:15px;
+        -webkit-animation: showdesc 0.5s cubic-bezier(.16,.84,.44,1) 0.6 forwards;
+        -moz-animation: showdesc 0.5s cubic-bezier(.16,.84,.44,1) 0.6forwards;
+        -o-animation: showdesc 0.5s cubic-bezier(.16,.84,.44,1) 0.6 forwards;
+
     }
 }
 .hidden{
@@ -137,6 +273,7 @@ video{
 .handles > li{
     display:inline-block;
     cursor:pointer;
+    margin-bottom:10px;
 }
 .splash > h2{
     background: #E51837;
@@ -161,11 +298,6 @@ section{
     position: relative;
     overflow-y:hidden;
     overflow-x:hidden;
-}
-.section-content{
-    padding: 30vh 10vw;
-    height:100vh;
-    text-align: center;
 }
 .container{
     overflow-y: scroll;
@@ -213,17 +345,6 @@ section{
 #highcharts-container{
     max-height:80vh;
 }
-#info.show, #info.resized{
-    position:absolute;
-    top: 10%; left:10%;
-    width:80%;
-    height:80%;
-    padding:15px;
-    -webkit-animation: showdesc 0.5s cubic-bezier(.16,.84,.44,1) 0.6 forwards;
-    -moz-animation: showdesc 0.5s cubic-bezier(.16,.84,.44,1) 0.6forwards;
-    -o-animation: showdesc 0.5s cubic-bezier(.16,.84,.44,1) 0.6 forwards;
-
-}
 #info > .closebtn{
     position: absolute;
     top:25px;
@@ -261,16 +382,6 @@ button{
 .section-title > .section-content{
     background:rgba(0,0,0,0.5);
 }
-.section-title button{
-    border: thick white solid;
-    color: white;
-    background: transparent;
-    padding:15px;
-    margin:15px;
-    min-width:300px;
-    min-height: 100px;
-    margin-top:100px;
-}
 .section-title button:hover, .section-title button:focus{
     background: rgba(0, 0, 0, 0.5);
 }
@@ -287,15 +398,7 @@ button{
     display:none;
 }
 
-.form button {
-    border: thick #E51837 solid;
-    color: #E51837;
-    background: white;
-    padding:15px;
-    margin:15px;
-    min-width:300px;
 
-}
 .gridlink{
     position:relative;
 }

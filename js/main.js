@@ -539,7 +539,8 @@ angular.module("app", [])
                         "Maintenance and upkeep of lots and overhead related to campus parking",
                         "Pay for DOTS employees and student staff"
                     ],
-                    sgatext: "There will be no fee increase next year. However, the parking fee is slated to increase significantly in following years as the number of parking spaces on the campus decreases due to construction projects. The parking fee for on-campus residents is projected to disappear along with resident parking in either 2017 or 2018."
+                    sgatext: "There will be no fee increase next year. However, the parking fee is slated to increase significantly in following years as the number of parking spaces on the campus decreases due to construction projects. The parking fee for on-campus residents is projected to disappear along with resident parking in either 2017 or 2018.",
+                    ap_name:""
                 },
                 'Resident Life': {
                     top3: [
@@ -547,7 +548,8 @@ angular.module("app", [])
                         "Personnel including resident assistants, housekeeping and 4-WORK staff",
                         "The Residence Hall Association"
                     ],
-                    sgatext: "The Resident Life fee will increase slightly to pay for increased overhead costs. A potential increase could pay for better furniture, two-ply toilet paper or better cable services. "
+                    sgatext: "The Resident Life fee will increase slightly to pay for increased overhead costs. A potential increase could pay for better furniture, two-ply toilet paper or better cable services. ",
+                    ap_name:""
                 },
                 'DOTS Shuttle-UM': {
                     top3: [
@@ -555,7 +557,8 @@ angular.module("app", [])
                         "NITE Ride",
                         "Paratransit services and miscellaneous buses, such as the airport shuttles"
                     ],
-                    sgatext: "The Shuttle-UM fee will see two increases next year — $2.23 per student to run the Purple, Gold and Green evening service routes starting at 10:00 a.m. on Saturday and Sunday and $1.50 per student to establish a facilities renewal fund for regular maintenance of shuttle facilities."
+                    sgatext: "The Shuttle-UM fee will see two increases next year — $2.23 per student to run the Purple, Gold and Green evening service routes starting at 10:00 a.m. on Saturday and Sunday and $1.50 per student to establish a facilities renewal fund for regular maintenance of shuttle facilities.",
+                    ap_name:""
                 },
                 'Campus Recreation Services': {
                     top3: [
@@ -563,7 +566,8 @@ angular.module("app", [])
                         "Operation and upkeep costs for recreational facilities",
                         "Program operating expenses, including materials for intramurals, equipment issue and the Maryland Adventure Program"
                     ],
-                    sgatext: "CRS is currently looking at the feasibility of the long-discussed South Campus recreation center. If officials determine a fee increase is necessary to build the facility, they’ll discuss the issue with a number of student groups."
+                    sgatext: "CRS is currently looking at the feasibility of the long-discussed South Campus recreation center. If officials determine a fee increase is necessary to build the facility, they’ll discuss the issue with a number of student groups.",
+                    ap_name:""
                 },
                 'Student Activities': {
                     top3: (undergrad) ? [
@@ -577,13 +581,15 @@ angular.module("app", [])
                     ],
                     sgatext: (undergrad) ? 
                         "An increase would make more money available for 400-plus student groups, some of which have not been able to fully fund their events. The SGA has proposed an increase of $5.28 that students will vote on in this year’s elections." :
-                        "The GSG will not be pursuing a fee increase, but a possible fee increase would go toward funding for co-sponsorships, more sophisticated lobbying efforts on behalf of graduate students and potentially more events."
+                        "The GSG will not be pursuing a fee increase, but a possible fee increase would go toward funding for co-sponsorships, more sophisticated lobbying efforts on behalf of graduate students and potentially more events.",
+                    ap_name:""
                 },
                 'Student Sustainability':{
                     top3:[
                         "Grant funding for projects to improve the environmental performance of the campus, such as food gardens, increased bicycle parking and solar panels on top of the A.V. Williams Building"
                     ],
-                    sgatext:"The sustainability fee is not set to change, but a potential increase would result in more funding for more sustainability projects around the campus."
+                    sgatext:"The sustainability fee is not set to change, but a potential increase would result in more funding for more sustainability projects around the campus.",
+                    ap_name:""
                 },
                 'Athletics':{
                     top3:[
@@ -591,7 +597,8 @@ angular.module("app", [])
                         "Debt service on Xfinity Center",
                         "Internships and part-time student jobs in the athletic department"
                     ],
-                    sgatext:"The athletics fee is not set to change, but a potential increase would go toward giveaways, such as student T-shirts."
+                    sgatext:"The athletics fee is not set to change, but a potential increase would go toward giveaways, such as student T-shirts.",
+                    ap_name:""
                 },
                 'Nyumburu':{
                     top3:[
@@ -599,7 +606,8 @@ angular.module("app", [])
                         "Staff and adjunct instructor salaries and health benefits",
                         "Supplies and furniture"
                     ],
-                    sgatext: "A fee increase would allow Nyumburu to host conferences and activities for at-risk Prince George’s County students in collaboration with academic departments. Officials have proposed a fee increase, but the amount is still being determined."
+                    sgatext: "A fee increase would allow Nyumburu to host conferences and activities for at-risk Prince George’s County students in collaboration with academic departments. Officials have proposed a fee increase, but the amount is still being determined.",
+                    ap_name:""
                 },
                 'Performing Arts': {
                     top3:[
@@ -607,7 +615,8 @@ angular.module("app", [])
                         "Internships, graduate assistant learning and regular student employment",
                         "Free student programming, including performance tickets, workshops and festivals such as NextNOW Fest"
                     ],
-                    sgatext:"The fee will see a small increase to fund mandatory overhead budget adjustments. A potential increase could result in more arts programming by The Clarice."
+                    sgatext:"The fee will see a small increase to fund mandatory overhead budget adjustments. A potential increase could result in more arts programming by The Clarice.",
+                    ap_name:""
                 },
                 'Student Technology':{
                     top3:[
@@ -615,7 +624,8 @@ angular.module("app", [])
                         "Infrastructure improvements such as updated software and hardware",
                         "Classroom technology"
                     ],
-                    sgatext: "There is no request for an increase in this fee. A potential fee increase could cover additional Wi-Fi infrastructure and free software for students."
+                    sgatext: "There is no request for an increase in this fee. A potential fee increase could cover additional Wi-Fi infrastructure and free software for students.",
+                    ap_name:""
                 },
                 'Library Technology':{
                     top3:[
@@ -623,7 +633,8 @@ angular.module("app", [])
                         "University Libraries student employees",
                         "Acquisition of e-resources"
                     ],
-                    sgatext: "University Libraries is not asking asking for a fee increase at this point. However, a potential fee increase could fund increased staff support, emerging technologies and media production, more collaboration workstations, more equipment loans and expansion of the engineering MakerSpace in McKeldin Library."
+                    sgatext: "University Libraries is not asking asking for a fee increase at this point. However, a potential fee increase could fund increased staff support, emerging technologies and media production, more collaboration workstations, more equipment loans and expansion of the engineering MakerSpace in McKeldin Library.",
+                    ap_name:""
                 },
                 'University Health Center':{
                     top3:[
@@ -631,7 +642,8 @@ angular.module("app", [])
                         "Campus Advocates Respond and Educate (CARE) to Stop Violence, a peer-based sexual assault and relationship violence response service",
                         "Smoking cessation, meditation and nutrition programs"
                     ],
-                    sgatext:"The fee will see a small increase to fund mandatory overhead budget adjustments. An increase in the fee could result in more resources for CARE and other educational health programming."
+                    sgatext:"The fee will see a small increase to fund mandatory overhead budget adjustments. An increase in the fee could result in more resources for CARE and other educational health programming.",
+                    ap_name:""
                 },
                 'Stamp Student Union':{
                     top3:[
@@ -639,11 +651,13 @@ angular.module("app", [])
                         "Student staff for the information desk, campus engagement and student group services",
                         "Campus engagement programming, such as homecoming, Alternative Breaks and Office of Multicultural Involvement & Community Advocacy and Leadership & Community Service-Learning programs"
                     ],
-                    sgatext:"The Stamp fee will increase $1.90 to expand staff support and educational, fundraising and development programming for student groups."
+                    sgatext:"The Stamp fee will increase $1.90 to expand staff support and educational, fundraising and development programming for student groups.",
+                    ap_name:""
                 },
                 'Facilities Management':{
                     top3:["none"],
-                    sgatext:"The student facilities fee is a newly repurposed fee. Money is being collected into a fund that will pay for student-driven facilities projects, such as installing outlets on McKeldin Mall, starting next year."
+                    sgatext:"The student facilities fee is a newly repurposed fee. Money is being collected into a fund that will pay for student-driven facilities projects, such as installing outlets on McKeldin Mall, starting next year.",
+                    ap_name:""
                 },
                 'Dining Services': {
                     top3:[
@@ -651,12 +665,14 @@ angular.module("app", [])
                         "Salaries and pay for dining hall and shop employees",
                         "Food and supplies for the dining halls and shops"
                     ],
-                    sgatext: "The fee will see a small increase to fund mandatory overhead budget adjustments. A larger potential fee increase could result in better-quality dining hall food, longer hours on the weekends and more dining points per student."
+                    sgatext: "The fee will see a small increase to fund mandatory overhead budget adjustments. A larger potential fee increase could result in better-quality dining hall food, longer hours on the weekends and more dining points per student.",
+                    ap_name:""
                 }
             };
             for(var department in info){
                 res.find(department).top3 = info[department].top3;
                 res.find(department).sgatext = info[department].sgatext;
+                res.find(department).ap_name = info[department].ap_name;
             }
             res.sort(function(a,b){return b.y-a.y});
             console.log(res);
